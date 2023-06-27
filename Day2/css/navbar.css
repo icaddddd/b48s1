@@ -1,0 +1,40 @@
+nav {
+    background-color: lightgrey;
+    height: 50px;
+}
+
+nav ul {
+    display: flex;
+    gap: 50px;
+    height: 50px;
+    align-items: center;
+}
+
+nav ul li {
+    list-style-type: none;
+}
+
+nav ul li a:hover {
+    color: orangered;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+nav ul img {
+    width: 50px;
+    height: 30px;
+    margin-top: 7px;
+    object-fit: contain;
+}
+
+nav ul li button {
+    border-style: none;
+    color: white;
+    background-color: orangered;
+    border-radius: 10px;
+    padding: 7px;
+    margin-left: 1400px;
+}
