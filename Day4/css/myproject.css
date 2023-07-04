@@ -1,0 +1,152 @@
+/* My Project */
+
+h1 {
+    margin: 30px;
+}
+
+.addmyproject {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.addmyproject h1 {
+    margin-top: 30px;
+}
+
+.formmyproject {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.formmyproject div {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+
+.formmyproject div input {
+    border-radius: 3px;
+    border-style: none;
+    box-shadow: 0px 0px 3px;
+}
+
+.formmyproject .date {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.formmyproject div textarea {
+    height: 70px;
+    border-radius: 3px;
+    border-style: none;
+    box-shadow: 0px 0px 3px;
+}
+
+.formmyproject .checkbox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+} 
+
+.formmyproject .checkbox div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.checkbox label {
+    color: #5d5d5d;
+}
+
+.checkbox1 input {
+    height: max-content;
+    align-self: center;
+}
+
+.checkbox2 input {
+    height: max-content;
+    align-self: center;
+}
+
+.button2 {
+    display: flex;
+    align-items: end;
+}
+
+.button2 button {
+    background-color: #111727;
+    color: white;
+    border-radius: 30px;
+    border-style: none;
+    padding: 5px;
+    width: 100px;
+}
+
+.inputimage {
+    display: flex;
+    background-color: white;
+    border-radius: 0.3rem;
+}
+
+.inputimage label {
+    display: inline-block;
+    background-color: lightgrey;
+    color: rgb(88, 88, 88);
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    width: fit-content;
+}
+
+
+/* projectlist */
+
+
+.projectlist {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin-top: 30px;
+    
+}
+
+.project {
+    display: flex;
+    flex-direction: row;
+}
+
+.project1 {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px;
+    width: 350px;
+    margin: 30px;
+    padding: 30px;
+    gap: 30px;
+}
+
+.icon {
+    display: flex;
+    flex-direction: row;
+}
+
+.btn {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.btn button {
+    width: 50%;
+    border-radius: 5px;
+    border-style: none;
+    box-shadow: 0px 0px 5px;
+    background-color: #111727;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
