@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+body{
+    background-color: #E2E6EA;
+}
+
+nav {
+    display: flex;
+    background-color: #dbdbdb;
+    padding: 0 40px;
+}
+
+nav ul {
+    display: flex;
+    width: 100%;
+    list-style-type: none;
+    gap: 50px;
+    align-items: center;;
+}
+
+
+nav ul li img {
+    width: 35px;
+    height: 30px;
+    object-fit: contain;
+    padding-top: 7px;
+    margin-left: 10px;
+}
+
+nav ul li a {
+    display: flex;
+    text-decoration: none;
+    color: black;
+}
+
+nav ul li a:hover {
+    font-weight: bolder;
+}
+
+nav ul li button {
+    border-radius: 10px;
+    border-style: none;
+    padding: 7px;
+    color: white;
+    background-color: #111727;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.border {
+    margin: 100px;
+    box-shadow: 0px 0px 10px;
+    border-color: black;
+    padding: 50px;
+    gap: 50px;
+}
+
+.tulisan {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+}
+
+.tulisan img {
+    display: flex;
+    width: 350;
+    height: 400px;
+    object-fit: inherit;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 0px 10px;
+    width: 500px;
+    padding-bottom: 20px;
+}
+
+.flex h1 {
+    font-weight: bolder;
+}
+
+.flex p {
+    text-align: justify;
+}
+
+.navright { 
+    display: flex;
+    justify-content: right;
+    margin-right: 20px;
+}
+
+.icon {
+    display: flex;
+    gap: 30px;
+}
+
+.icon img {
+    width: 60px;
+    height: 60px;
+}
+
+.download {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.download p {
+    display: flex;
+    align-items: center ;
+    font-size: larger;
+    font-weight: bolder;
+    gap: 10px;
+}
+
+.download p a img {
+    width: 30px;
+    height: 30px;
+}
+
+.img h2 {
+    padding-top: 15px;
+}
+
+.download a button {
+    border-radius: 20px;
+    border-style: none;
+    background-color: #111727;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    width: 150px;
+    
+}
+
+
+
+
+
+/*form*/
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 50px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form div {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.form div select {
+    width: 500px;
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px;
+    border-style: none;
+    gap: 20px;
+    user-select: auto;
+}
+
+.form div input {
+    width: 500px;
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px;
+    border-style: none;
+    gap: 20px;
+}
+
+.form div label {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.form div textarea {
+    width: 500px;
+    height: 80px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px;
+    border-style: none;
+}
+
+.form div button {
+    box-shadow: 0px 0px 2px;
+    width: 100px;
+    border-style: none;
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: #111727;
+    color: white;
+    cursor: pointer;
+}
+
+.button {
+    display: flex;
+    align-items: end;
+}
+
+/* Add My Project */
+
+.addmyproject {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.addmyproject h1 {
+    margin-top: 30px;
+}
+
+.formmyproject {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.formmyproject div {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+
+.formmyproject div input {
+    border-radius: 3px;
+    border-style: none;
+    box-shadow: 0px 0px 3px;
+}
+
+.formmyproject .date {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.formmyproject div textarea {
+    height: 70px;
+    border-radius: 3px;
+    border-style: none;
+    box-shadow: 0px 0px 3px;
+}
+
+.formmyproject .checkbox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+} 
+
+.formmyproject .checkbox div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.checkbox label {
+    color: #5d5d5d;
+}
+
+.checkbox1 input {
+    height: max-content;
+    align-self: center;
+}
+
+.checkbox2 input {
+    height: max-content;
+    align-self: center;
+}
+
+.button2 {
+    display: flex;
+    align-items: end;
+}
+
+.button2 button {
+    background-color: #111727;
+    color: white;
+    border-radius: 30px;
+    border-style: none;
+    padding: 5px;
+    width: 100px;
+}
+
+.inputimage {
+    background-color: white;
+    border-radius: 0.3rem;
+}
+
+.inputimage label {
+    display: inline-block;
+    background-color: lightgrey;
+    color: rgb(88, 88, 88);
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    width: fit-content;
+}
+

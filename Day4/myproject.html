@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyProject D4</title>
+    <link rel="stylesheet" href="s.css"/>
+    <link rel="icon" type="images/saya.JPG">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><img src="images/dumbways.png"></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="myproject.html">My Project</a></li>
+        </ul>
+        <ul class="navright">
+            <a href="form.html">
+                <li><button>CONTACT ME</button></li>
+            </a>
+        </ul>
+    </nav>
+
+    <div class="addmyproject">
+        <h1>Add My Project</h1>
+        <form class="formmyproject">
+            <div>
+                <label>Project Name</label>
+                <input id="ProjectName"/>
+            </div>
+            <div class="date">
+                <div id="startdate">
+                    <label>Start Date</label>
+                    <input type="date" id="start-date"/>
+                </div>
+                <div id="enddate">
+                    <label>End Date</label>
+                    <input type="date" id="end-date"/>
+                </div>
+            </div>
+            <div>
+                <label>Description</label>
+                <textarea id="description"></textarea>
+            </div>
+            <div>
+                <label>Technologies</label>
+                <div class="checkbox">
+                    <div class="checkbox1">
+                        <div>
+                            <input type="checkbox" id="1" name="1" value="Node js">
+                            <label for="1">Node js</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="2" name="2" value="Next js">
+                            <label for="2">Next js</label>
+                        </div>
+                    </div>
+                    <div class="checkbox2">
+                        <div>
+                            <input type="checkbox" id="3" name="3" value="React js">
+                            <label for="3">React js</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="4" name="4" value="Typescript">
+                            <label for="4">Typescript</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label>Upload Image</label>
+                <div class="inputimage">
+                    <input type="file" id="upload" hidden/>
+                    <label for="upload">Choose</label>
+                </div>
+            </div>
+            <div class="button2">
+                <button>SUBMIT</button>
+            </div>
+        </form>
+
+
+    </div>
+</body>
+</html>
