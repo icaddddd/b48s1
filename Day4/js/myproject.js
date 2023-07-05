@@ -27,10 +27,14 @@ let addBlog = (event) => {
     renderBlog()
 
     console.log(dataBlog)
+
+    if (project === ""){
+        alert('project name harus diisi')
+    } else if (startdate === ""){
+        return alert('startdate harus diisi')
+    } else if (enddate === ""){
+        return alert('enddate harus diisi')
+    } else if (description === ""){
+        return alert('description harus diisi')
+    }
 }
-
-
-
-
-    
-
