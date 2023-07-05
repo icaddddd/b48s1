@@ -27,7 +27,6 @@ let addBlog = (event) => {
     renderBlog()
 
     console.log(dataBlog)
-    console.log(project)
 }
 
 
