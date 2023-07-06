@@ -1,0 +1,91 @@
+.border {
+    margin: 100px;
+    box-shadow: 0px 0px 10px;
+    border-color: black;
+    padding: 50px;
+    gap: 50px;
+}
+
+.tulisan {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+}
+
+.tulisan img {
+    display: flex;
+    width: 350;
+    height: 400px;
+    object-fit: inherit;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 0px 10px;
+    width: 500px;
+    padding-bottom: 20px;
+}
+
+.flex h1 {
+    font-weight: bolder;
+}
+
+.flex p {
+    text-align: justify;
+}
+
+
+
+.icon {
+    display: flex;
+    gap: 30px;
+}
+
+.icon img {
+    width: 60px;
+    height: 60px;
+}
+
+.download {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.download p {
+    display: flex;
+    align-items: center ;
+    font-size: larger;
+    font-weight: bolder;
+    gap: 10px;
+}
+
+.download p a img {
+    width: 30px;
+    height: 30px;
+}
+
+.img h2 {
+    padding-top: 15px;
+}
+
+.download a button {
+    border-radius: 20px;
+    border-style: none;
+    background-color: #111727;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    width: 150px;
+    
+}

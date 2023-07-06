@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyProject D4</title>
+    <link rel="stylesheet" href="css/all&navbar.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/form.css"/>
+    <link rel="stylesheet" href="css/myproject.css"/>
+    <link rel="icon" href="images/dumbways.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+
+</head>
+
+<!--navbar start-->
+
+<body>
+    <nav>
+        <ul>
+            <li><img src="images/dumbways.png"></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="myproject.html">My Project</a></li>
+        </ul>
+        <ul class="navright">
+            <a href="form.html">
+                <li><button>CONTACT ME</button></li>
+            </a>
+        </ul>
+    </nav>
+
+<!--navbar end-->
+
+
+<!--..-->
+
+    <div class="blog">
+        <h1>Add My Project</h1>
+            <form onsubmit="addBlog(event)" class="formmyproject">
+                <div>
+                    <label for="input-name">Project Name</label>
+                    <input id="input-name"/>
+                </div>
+                <div class="date">
+                    <div class="startdate">
+                        <label for="start-date">Start Date</label>
+                        <input type="date" id="start-date"/>
+                    </div>
+                    <div class="enddate">
+                        <label for="end-date">End Date</label>
+                        <input type="date" id="end-date"/>
+                    </div>
+                </div>
+                <div>
+                    <label for="description">Description</label>
+                    <textarea id="description"></textarea>
+                </div>
+                <div>
+                    <label>Technologies</label>
+                    <div class="checkbox">
+                        <div class="checkbox1">
+                            <div>
+                                <input type="checkbox" id="input-reactjs" class="multicok">
+                                <label for="input-reactjs">React js</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="input-javascript" class="multicok">
+                                <label for="input-javascript">Javascript</label>
+                            </div>
+                        </div>
+                        <div class="checkbox2">
+                            <div>
+                                <input type="checkbox" id="input-android" class="multicok">
+                                <label for="input-android">Android</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="input-nodejs" class="multicok">
+                                <label for="input-nodejs">Node js</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label>Upload Image</label>
+                    <div class="inputimage">
+                        <input type="file" id="input-file" hidden/>
+                        <label for="input-file">Choose</label>
+                    </div>
+                </div>
+                <div class="button2">
+                    <button>SUBMIT</button>
+                </div>
+            </form>
+    </div>
+
+    <br>
+    <br>
+
+<!--project list-->
+    <hr class="line">
+
+    <div id="contents">
+        <h1>MY PROJECT</h1>
+        <div class="project" id="projectlagi">
+            <div class="project1">
+                    <img src="images/hmm.jpeg"/>
+                    <a href="myproject-detail.html" id="apaa">
+                        <h3>Aku Hobi Main Bola - 2021</h3>
+                    </a>
+                    <h5>Durasi: 3 bulan</h5>
+                    <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum cum aut doloribus dolorum explicabo voluptas quos nam sequi, quam assumenda ratione molestiae doloremque quibusdam laboriosam iusto rem natus facilis totam.</h5>
+                    <div class="icon">
+                        <i class="fa-brands fa-react"></i>                        
+                        <i class="fa-brands fa-js"></i>                       
+                        <i class="fa-brands fa-android"></i>     
+                        <i class="fa-brands fa-node-js"></i>               
+                    </div>    
+                    <div class="btn">
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    
+    
+    <script src="js/myproject.js"></script>
+</body>
+</html>
