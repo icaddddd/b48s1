@@ -106,13 +106,6 @@ h1 {
 /* projectlist */
 
 
-.projectlist {
-    display: flex;
-    flex-direction: column;
-    background: white;
-    margin-top: 30px;
-    
-}
 
 .project {
     display: flex
@@ -156,7 +149,7 @@ h1 {
 }
 
 .project1 h5 {
-    text-align: justify;
+    text-align: start;
 }
 
 
@@ -167,6 +160,10 @@ h1 {
         width: 250px;
         gap: 20px;
     }
+
+    .project1 h5 {
+        text-align: justify;
+    }
 }
 
 
@@ -174,17 +171,32 @@ h1 {
 
 @media only screen and (max-width: 450px) {
     .project1 {
-        width: 150px;
+        height: auto;
+        padding: 10px;
+        width: 100px;
         gap: 5px;
     }
 
     #apaa h3 {
-        font-size: 15px;
+        font-size: 10px;
     }
 
-    #apaa h5 {
+    .btn button {
+        gap: 5px;
+        font-size: 12px;
+    }
+
+    .icon {
+        gap: 10px;
+    }
+
+    h6{
+        font-size: 6px;
+    }
+
+    .project1 h5 {
+        text-align: start;
         font-size: 8px;
     }
 
-    
 }

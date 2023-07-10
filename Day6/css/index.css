@@ -185,7 +185,6 @@
     }
 
    .flex h1 {
-    margin: 10px;
     text-align: left;
    }
 
@@ -196,4 +195,6 @@
    .download {
     gap: 10px;
    }
+
+   
 }
