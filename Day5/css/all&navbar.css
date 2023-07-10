@@ -12,7 +12,7 @@ body{
 nav {
     display: flex;
     background-color: #dbdbdb;
-    padding: 0 40px;
+    padding: 0 40px;    
 }
 
 nav ul {
@@ -57,6 +57,8 @@ nav ul li button {
     justify-content: right;
     margin-right: 20px;
 }
+
+
 
 
 

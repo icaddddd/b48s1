@@ -7,21 +7,30 @@
     <link rel="stylesheet" href="css/myproject.css"/>
     <link rel="icon" href="images/dumbways.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 
 <body>
     <nav>
         <ul>
             <li><img src="images/dumbways.png"></li>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="myproject.html">My Project</a></li>
+            <li class="collapse"><a href="index.html">Home</a></li>
+            <li class="collapse"><a href="myproject.html">My Project</a></li>
         </ul>
-        <ul class="navright">
-            <a href="form.html">
-                <li><button>CONTACT ME</button></li>
-            </a>
-        </ul>
+        <div class="navright collapse">
+            <a href="form.html">Contact Me</a>
+        </div>
+        <div class="navright" id="hamburger-btn">
+            <button onclick="openHamburger()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
     </nav>
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="index.html" class="nav-active" id="nav-active">Home</a>
+        <a href="myproject.html">My Project</a>
+        <a href="form.html">Contact Me</a>
+    </div>
 
     <div class="border">
         <div class="tulisan">
@@ -51,11 +60,12 @@
                 </div>
             </div>
             <div class="img">
-                <img src="images/sayaaa.JPG"/> 
+                <img src="images/hmm.jpeg"/> 
                 <h2>SJAAF RHISJAD DAUD DJAVATRI</h2>
                 <p>Fullstack Developer</p>
             </div> 
         </div>
     </div>
+    <script src="js/nav.js"></script>
 </body>
 </html>

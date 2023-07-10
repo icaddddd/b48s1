@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+body{
+    background-color: #E2E6EA;
+}
+
+nav {
+    display: flex;
+    background-color: #dbdbdb;
+    padding: 0px 40px;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    gap: 50px;
+    width: 100%;
+    align-items: center;
+}
+
+
+nav ul li img {
+    width: 35px;
+    height: 30px;
+    object-fit: contain;
+    padding-top: 7px;
+    margin-left: 10px;
+}
+
+nav ul li a {
+    display: flex;
+    text-decoration: none;
+    color: black;
+}
+
+nav ul li a:hover {
+    font-weight: bolder;
+}
+
+nav div li button {
+    border-radius: 10px;
+    border-style: none;
+    padding: 7px;
+    color: white;
+    background-color: #111727;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.navright { 
+    display: flex;
+    justify-content: right;
+    margin-right: 40px;
+}
+
+.navright a {
+    text-decoration: none;
+    background-color: #111727;
+    color: white;
+    padding: 7px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 100px;
+    text-align: center;
+}
+
+.navright button {
+    border-style: none;
+    background-color: #E2E6EA;
+}
+
+.hamburger-container {
+    display: flex;
+    display: none;
+    flex-direction: column;
+    background-color: #D3D3D3;
+    gap: 5px;
+    width: 100%;
+    align-items: center;
+}
+
+.hamburger-container a {
+    text-align: center;
+    text-decoration: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: black;
+    width: 150px;
+}
+
+.hamburger-container .nav-active {
+    background-color: #111727;
+    color: white;
+    border-radius: 20px;
+
+}
+
+
+/* tablet */
+
+@media only screen and (max-width: 850px) {
+    
+}
+    
+
+
+/* phone */
+
+
+@media only screen and (max-width: 450px) {
+    nav {
+        background-color: #E2E6EA;
+    }
+    nav ul {
+        padding: 0px 10px;
+    }
+
+    .navright {
+        margin-right: 0px;
+    }
+
+    nav ul li img {
+        margin-left: 0px;
+    }
+
+    .collapse {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 451px){
+    #hamburger-btn {
+        display: none;
+    }
+
+}
+
+
+
+
+
+
+
+
+

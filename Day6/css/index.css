@@ -1,0 +1,199 @@
+.border {
+    margin: 100px;
+    box-shadow: 0px 0px 10px;
+    border-color: black;
+    padding: 50px;
+    gap: 50px;
+}
+
+.tulisan {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.tulisan img {
+    display: flex;
+    width: 350px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 0px 10px;
+    width: 500px;
+    padding-bottom: 20px;
+}
+
+.flex h1 {
+    font-weight: bolder;
+}
+
+.flex p {
+    text-align: justify;
+}
+
+.icon {
+    display: flex;
+    gap: 30px;
+}
+
+.icon img {
+    width: 60px;
+    height: 60px;
+}
+
+.download {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.download p {
+    display: flex;
+    align-items: center ;
+    font-size: larger;
+    font-weight: bolder;
+    gap: 10px;
+}
+
+.download p a img {
+    width: 30px;
+    height: 30px;
+}
+
+.img h2 {
+    padding-top: 15px;
+}
+
+.download a button {
+    border-radius: 20px;
+    border-style: none;
+    background-color: #111727;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    width: 150px;
+    
+}
+
+/* tablet */ 
+
+@media only screen and (max-width: 850px) {
+    .tulisan {
+        flex-direction: column;
+    }
+
+    .icon {
+        justify-content: center;
+    }
+
+    .download {
+        justify-content: left;
+    }
+
+    .img img {
+        width: 100%;
+    }
+
+    .border {
+        margin: 50px;
+    }
+
+    .flex h1 {
+        font-size: 20px;
+        text-align: left;
+        margin: 0px;
+    }
+
+    .flex p {
+        font-size: 15px;
+    }
+
+    .icon img {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+
+/* phone */
+
+@media only screen and (max-width: 450px) {
+    .border {
+        margin: 10px;
+        padding: 10px;
+        gap: 20px;
+    }
+    
+    
+    .tulisan {
+        flex-direction: column;
+        margin: 10px;
+        padding: 10px;
+        gap: 20px;
+    }
+
+    .icon img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .img {
+        width: 100%;
+    }
+
+    .img p {
+        font-size: small;
+    }
+
+    .img img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .img h2 {
+        padding: 10px;
+        font-size: small;
+    }
+
+    .border {
+        margin: 20px;
+    }
+
+    .download a button {
+        padding: 5px;
+        width: 100px;
+    }
+
+    .download p {
+        font-size: 15px;
+    }
+
+    .flex {
+        gap: 20px;
+    }
+
+   .flex h1 {
+    margin: 10px;
+    text-align: left;
+   }
+
+   .flex p {
+    font-size: small;
+   }
+   
+   .download {
+    gap: 10px;
+   }
+}
