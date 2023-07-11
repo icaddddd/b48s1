@@ -39,7 +39,8 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    font-weight: bolder;
+    font-weight: bold;
+    color: orangered;
 }
 
 nav div li button {
@@ -67,6 +68,11 @@ nav div li button {
     border-radius: 10px;
     width: 100px;
     text-align: center;
+}
+
+.navright a:hover {
+    background-color: orangered;
+    color: #111727;
 }
 
 .navright button {
@@ -103,6 +109,9 @@ nav div li button {
 /* tablet */
 
 @media only screen and (max-width: 850px) {
+    nav ul {
+        gap: 20px;
+    }
     
 }
     
@@ -130,12 +139,16 @@ nav div li button {
     .collapse {
         display: none;
     }
+
+    
 }
 
 @media only screen and (min-width: 451px){
     #hamburger-btn {
         display: none;
     }
+
+    
 
 }
 

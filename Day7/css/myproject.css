@@ -1,7 +1,8 @@
 /* My Project */
 
-h1 {
+.blog h1 {
     margin: 30px;
+    text-align: center;
 }
 
 .addmyproject {
@@ -103,33 +104,70 @@ h1 {
 }
 
 
+/* container */
+
+.pembungkus-container {
+    background-color: white;
+    padding: 80px;
+}
+
+.pembungkus-container h1 {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 40px;
+}
+
+
+
+
 /* projectlist */
 
 
 
 .project {
-    display: flex
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto auto;
 }
 
 .project1 {
-    display: flex;
-    flex-direction: column;
+    background-color: white;
     box-shadow: 0px 0px 10px;
-    width: 350px;
+    width: 300px;
+    height: 500px;
     margin: 30px;
-    padding: 30px;
-    gap: 30px;
+    padding: 10px;
 }
 
-.icon {
-    display: flex;
-    flex-direction: row;
+.project1 img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.project1 h5 {
+    font-size: small;
+    text-overflow: ellipsis;
+    white-space: wrap;
+    overflow: hidden;
+    height: 7em;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.project1 .icon {
+    font-size: 25px;
+    padding-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .btn {
     display: flex;
     width: 100%;
     gap: 10px;
+    margin-bottom: 10px;
 }
 
 .btn button {
@@ -148,55 +186,69 @@ h1 {
     color: black;
 }
 
-.project1 h5 {
-    text-align: start;
-}
+
 
 
 /* tablet */
 
 @media only screen and (max-width: 850px) {
-    .project1 {
-        width: 250px;
-        gap: 20px;
+    .project {
+        grid-template-columns: auto auto;
     }
 
-    .project1 h5 {
-        text-align: justify;
-    }
+    
 }
 
 
 /* phone */
 
 @media only screen and (max-width: 450px) {
-    .project1 {
-        height: auto;
-        padding: 10px;
-        width: 100px;
-        gap: 5px;
+    .blog h1 {
+        margin: 10px;
+        font-size: 20px;
+    }
+    .pembungkus-container h1{
+        font-size: 20px;
+    }
+    .project {
+        grid-template-columns: auto auto;
     }
 
-    #apaa h3 {
-        font-size: 10px;
+    .project1 {
+        width: 160px;
+        height: 250px;
+        margin: 10px;
+    }
+
+    .project1 img {
+        height: 125px;
+        margin-bottom: 5px;
     }
 
     .btn button {
         gap: 5px;
-        font-size: 12px;
     }
 
-    .icon {
-        gap: 10px;
+    .project1 h3 {
+        font-size: 9px;
     }
 
-    h6{
-        font-size: 6px;
+    .project1 h6 {
+        font-size: 5px;
     }
 
     .project1 h5 {
-        text-align: start;
-        font-size: 8px;
+        font-size: 7px;
+        margin-top: 5px;
     }
 
+    .project1 .icon {
+        font-size: 11px;
+        margin-top: 3px;
+    }
+
+    .btn button {
+        padding: 2px;
+        font-size: 8px
+    }
 }
