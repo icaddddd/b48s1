@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form D2</title>
+    <link rel="stylesheet" href="css/all&navbar.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/form.css"/>
+    <link rel="stylesheet" href="css/myproject.css"/>
+    <link rel="icon" href="images/dumbways.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><img src="images/dumbways.png"></li>
+            <li class="collapse"><a href="index.html">Home</a></li>
+            <li class="collapse"><a href="myproject.html">My Project</a></li>
+        </ul>
+        <div class="navright collapse">
+            <a href="form.html">Contact Me</a>
+        </div>
+        <div class="navright" id="hamburger-btn">
+            <button onclick="openHamburger()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="index.html">Home</a>
+        <a href="myproject.html">My Project</a>
+        <a href="form.html" class="nav-active">Contact Me</a>
+    </div>
+
+    <div class="contact-form">
+        <h1>GET IN TOUCH</h1>
+        <div class="contact">
+            <form class="form">
+                <div>
+                    <Label>
+                        Name
+                    </Label>
+                    <input id="inputname"/>
+                </div>
+                <div>
+                    <label>
+                        Email
+                    </label>
+                    <input id="inputemail"/>
+                </div>
+                <div>
+                    <label>
+                        Phone Number
+                    </label>
+                    <input id="inputphone"/>
+                </div>
+                <div>
+                    <label>
+                        Subject
+                    </label>
+                    <select id="inputsubject">
+                        <option value=""hidden></option>
+                        <option value="Frontend Developer">Frontend Developer</option>
+                        <option value="Backend Developer">Backend Developer</option>
+                        <option value="Fullstack Developer">Fullstack Developer</option>
+                    </select>
+                </div>
+                <div>
+                    <label>
+                        Your Message
+                    </label>
+                    <textarea id="inputmessage">
+                    </textarea>
+                </div> 
+                <div class="button">
+                    <button type="submit" onclick="submitData(event)">SUBMIT</button>
+                </div>
+            </form>
+        </div>    
+    </div>
+    <script src="js/contact.js"></script>
+    <script src="js/nav.js"></script>
+</body>
+</html>

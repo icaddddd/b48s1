@@ -1,0 +1,130 @@
+.myproject-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.myproject-detail1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 30px;
+    margin: 20px;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    text-align: left;
+}
+
+.text1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.text1-1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.text1-2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.text2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.texttext {
+    display: flex;
+    gap: 30px;
+}
+
+.text2-1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.text2-2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.text2-3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.text2-4 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.text-text1 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.text-text2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.myproject-detail .myproject-detail1 img {
+    width: 550px;
+    height: 350px;
+    object-fit: cover;
+}
+
+.myproject-detail h5 {
+    text-align: justify;
+    width: 100%;
+}
+
+.new {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+@media only screen and (max-width: 450px) {
+    .new {
+        flex-direction: column;
+    }
+
+    .myproject-detail .myproject-detail1 img {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+}

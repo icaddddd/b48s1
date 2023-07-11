@@ -1,6 +1,6 @@
 /* My Project */
 
-.blog h1 {
+h1 {
     margin: 30px;
 }
 
@@ -103,64 +103,27 @@
 }
 
 
-/* container */
-
-.pembungkus-container {
-    background-color: aliceblue;
-    padding: 80px;
-}
-
-.pembungkus-container h1 {
-    text-align: center;
-    margin-top: 0px;
-    margin-bottom: 40px;
-    
-}
-
-
-
-
 /* projectlist */
 
 
 
 .project {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: auto auto auto;
+    display: flex
 }
 
 .project1 {
-    background-color: white;
+    display: flex;
+    flex-direction: column;
     box-shadow: 0px 0px 10px;
-    width: 300px;
-    height: 500px;
+    width: 350px;
     margin: 30px;
-    padding: 10px;
+    padding: 30px;
+    gap: 30px;
 }
 
-.project1 img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    margin-bottom: 10px;
-}
-
-.project1 h5 {
-    font-size: small;
-    text-overflow: ellipsis;
-    white-space: wrap;
-    overflow: hidden;
-    height: 7em;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.project1 .icon {
-    font-size: 25px;
-    padding-right: 20px;
-    margin-bottom: 15px;
-    margin-top: 10px;
+.icon {
+    display: flex;
+    flex-direction: row;
 }
 
 .btn {
@@ -185,29 +148,55 @@
     color: black;
 }
 
-
+.project1 h5 {
+    text-align: start;
+}
 
 
 /* tablet */
 
 @media only screen and (max-width: 850px) {
-    .project {
-        grid-template-columns: auto auto;
+    .project1 {
+        width: 250px;
+        gap: 20px;
     }
 
-    
+    .project1 h5 {
+        text-align: justify;
+    }
 }
 
 
 /* phone */
 
 @media only screen and (max-width: 450px) {
-    .project {
-        grid-template-columns: auto;
+    .project1 {
+        height: auto;
+        padding: 10px;
+        width: 100px;
+        gap: 5px;
+    }
+
+    #apaa h3 {
+        font-size: 10px;
     }
 
     .btn button {
         gap: 5px;
         font-size: 12px;
     }
+
+    .icon {
+        gap: 10px;
+    }
+
+    h6{
+        font-size: 6px;
+    }
+
+    .project1 h5 {
+        text-align: start;
+        font-size: 8px;
+    }
+
 }
