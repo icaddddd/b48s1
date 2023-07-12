@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonial D7</title>
+    <link rel="stylesheet" href="css/all&navbar.css"/>
+    <link rel="stylesheet" href="css/testimonial.css">
+    <link rel="icon" href="images/dumbways.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><img src="images/dumbways.png"></li>
+            <li class="collapse"><a href="index.html">Home</a></li>
+            <li class="collapse"><a href="myproject.html">My Project</a></li>
+            <li class="collapse"><a href="testimonial.html">Testimonial</a></li>
+        </ul>
+        <div class="navright collapse">
+            <a href="form.html">Contact Me</a>
+        </div>
+        <div class="navright" id="hamburger-btn">
+            <button onclick="openHamburger()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="index.html">Home</a>
+        <a href="myproject.html">My Project</a>
+        <a href="form.html">Contact Me</a>
+        <a href="testimonial.html" class="nav-active">Testimonial</a>
+    </div>
+
+    <div class="container">
+        <h1>My Testimonials</h1>
+        <div class="container-rating">
+            <h2>Rating by Star</h2>
+            <div class="rating">
+                <button class="rating-button" onclick="buttonTestimonial()">All</button>
+                <button class="rating-button" onclick="ratingTestimonial(1)">
+                    1 <i class="fa-sharp fa-regular fa-star"></i>
+                </button>
+                <button class="rating-button" onclick="ratingTestimonial(2)">
+                    2 <i class="fa-sharp fa-regular fa-star"></i>
+                </button>
+                <button class="rating-button" onclick="ratingTestimonial(3)">
+                    3 <i class="fa-sharp fa-regular fa-star"></i>
+                </button>
+                <button class="rating-button" onclick="ratingTestimonial(4)">
+                    4 <i class="fa-sharp fa-regular fa-star"></i>
+                </button>
+                <button class="rating-button" onclick="ratingTestimonial(5)">
+                    5 <i class="fa-sharp fa-regular fa-star"></i>
+                </button>
+            </div>
+        </div>
+        <div class="container-grid" id="container-grid">
+
+        </div>
+
+    </div>
+
+    <script src="js/testimonial.js"></script>
+    <script src="js/nav.js"></script>
+    
+</body>
+
+</html>

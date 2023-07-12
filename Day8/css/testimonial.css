@@ -5,26 +5,33 @@
 }
 
 .container-grid {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    grid-template-columns: auto auto auto;
-    margin-top: 30px;
+    gap: 30px;
 }
 
 .container-grid-lagi {
     background-color: white;
     box-shadow: 0px 0px 10px;
     width: 280px;
-    height: 350px;
-    margin: 30px;
+    height: 320px;
+    margin-bottom: 20px;
+    margin: 10px 20px;
     padding: 10px;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
+    transition: .1s;
+}
+
+.container-grid-lagi:hover {
+    transform: scale(1.05);
 }
 
 .container-grid-lagi img {
     width: 100%;
-    height: 250px;
+    height: 200px;
     object-fit: cover;
     margin-bottom: 10px;
 }
@@ -32,17 +39,47 @@
 .container-grid-lagi .quote {
     font-size: 12px;
     font-style: italic;
-    margin-bottom: 20px;
     text-overflow: ellipsis;
     white-space: wrap;
     overflow: hidden;
     width: 100%;
+    margin: 10px 0px;
 }
 
 .container-grid-lagi .user {
     font-weight: bold;
     text-align: right;
+    margin-top: 10px;
 }
+
+.container-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0px;
+} 
+
+.container-rating h2 {
+    font-size: 20px;
+}
+
+.rating-button {
+    margin: 20px;
+    padding: 0px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #111727;
+    color: white;
+    border-style: none;
+    cursor: pointer;
+    width: 80px;
+}
+.rating-button:hover {
+    background-color: orangered;
+}
+
+
+
 
 /* tablet */
 
@@ -55,14 +92,12 @@
 /* phone */
 
 @media only screen and (max-width: 450px) {
-    .container-grid {
-        grid-template-columns: auto auto;
-    }
+    
 
     .container-grid-lagi {
         width: 140px;
         height: 175px;
-        margin: 10px;
+        margin: 5px 5px;
     }
 
     .container-grid-lagi img {
@@ -74,10 +109,30 @@
     }
 
     .container-grid-lagi .user {
-        font-size: 12px;
+        font-size: 10px;
+        margin-top: 0px;
     }
 
     .container h1 {
         font-size: 20px;
+    }
+
+    .container h2 {
+        font-size: 16px;
+    }
+
+    .rating {
+        display: flex;
+    }
+
+    .rating-button {
+        font-size: 12px;
+        padding: 0px 10px;
+        margin: 10px 5px;
+        width: 50px;
+    }
+
+    .container-rating {
+        margin: 10px 0px;
     }
 }

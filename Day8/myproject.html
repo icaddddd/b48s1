@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyProject D4</title>
+    <link rel="stylesheet" href="css/all&navbar.css"/>
+    <link rel="stylesheet" href="css/myproject.css"/>
+    <link rel="icon" href="images/dumbways.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+</head>
+
+<!--navbar start-->
+
+<body>
+    <nav>
+        <ul>
+            <li><img src="images/dumbways.png"></li>
+            <li class="collapse"><a href="index.html">Home</a></li>
+            <li class="collapse"><a href="myproject.html">My Project</a></li>
+            <li class="collapse"><a href="testimonial.html">Testimonial</a></li>
+        </ul>
+        <div class="navright collapse">
+            <a href="form.html">Contact Me</a>
+        </div>
+        <div class="navright" id="hamburger-btn">
+            <button onclick="openHamburger()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="index.html">Home</a>
+        <a href="myproject.html" class="nav-active">My Project</a>
+        <a href="form.html">Contact Me</a>
+        <a href="testimonial.html">Testimonial</a>
+    </div>
+
+<!--navbar end-->
+
+
+<!--..-->
+
+    <div class="blog">
+        <h1>Add My Project</h1>
+            <form onsubmit="addBlog(event)" class="formmyproject">
+                <div>
+                    <label for="input-name">Project Name</label>
+                    <input id="input-name"/>
+                </div>
+                <div class="date">
+                    <div class="startdate">
+                        <label for="start-date">Start Date</label>
+                        <input type="date" id="start-date"/>
+                    </div>
+                    <div class="enddate">
+                        <label for="end-date">End Date</label>
+                        <input type="date" id="end-date"/>
+                    </div>
+                </div>
+                <div>
+                    <label for="description">Description</label>
+                    <textarea id="description"></textarea>
+                </div>
+                <div>
+                    <label>Technologies</label>
+                    <div class="checkbox">
+                        <div class="checkbox1">
+                            <div>
+                                <input type="checkbox" id="input-reactjs" class="multicok">
+                                <label for="input-reactjs">React js</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="input-javascript" class="multicok">
+                                <label for="input-javascript">Javascript</label>
+                            </div>
+                        </div>
+                        <div class="checkbox2">
+                            <div>
+                                <input type="checkbox" id="input-android" class="multicok">
+                                <label for="input-android">Android</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="input-nodejs" class="multicok">
+                                <label for="input-nodejs">Node js</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label>Upload Image</label>
+                    <div class="inputimage">
+                        <input type="file" id="input-file" hidden/>
+                        <label for="input-file">Choose</label>
+                    </div>
+                </div>
+                <div class="button2">
+                    <button>SUBMIT</button>
+                </div>
+            </form>
+    </div>
+
+    <br>
+    <br>
+
+<!--project list-->
+    <hr class="line">
+
+    <div class="pembungkus-container">
+        <h1>MY PROJECT</h1>
+        <div class="project" id="projectlagi">
+            <div class="project1">
+                    <img src="images/hmm.jpeg"/>
+                    <a href="myproject-detail.html" id="apaa">
+                        <h3>Aku Hobi Main Bola - 2021</h3>
+                    </a>
+                    <h6>Durasi: 3 bulan</h6>
+                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque impedit sunt numquam, quasi eligendi, tempore maiores perferendis incidunt atque voluptatum iure vel similique, ratione dolor? Sit quas repellendus labore quo.</h5>
+                    <div class="icon">
+                        <i class="fa-brands fa-react"></i>                        
+                        <i class="fa-brands fa-js"></i>                       
+                        <i class="fa-brands fa-android"></i>     
+                        <i class="fa-brands fa-node-js"></i>               
+                    </div>    
+                    <div class="btn">
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
+            </div>
+            <div class="project1">
+                <img src="images/hmm.jpeg"/>
+                <a href="myproject-detail.html" id="apaa">
+                    <h3>Aku Hobi Main Bola - 2021</h3>
+                </a>
+                <h6>Durasi: 3 bulan</h6>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque impedit sunt numquam, quasi eligendi, tempore maiores perferendis incidunt atque voluptatum iure vel similique, ratione dolor? Sit quas repellendus labore quo.</h5>
+                <div class="icon">
+                    <i class="fa-brands fa-react"></i>                        
+                    <i class="fa-brands fa-js"></i>                       
+                    <i class="fa-brands fa-android"></i>     
+                    <i class="fa-brands fa-node-js"></i>               
+                </div>    
+                <div class="btn">
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+            </div>
+            <div class="project1">
+                <img src="images/hmm.jpeg"/>
+                <a href="myproject-detail.html" id="apaa">
+                    <h3>Aku Hobi Main Bola - 2021</h3>
+                </a>
+                <h6>Durasi: 3 bulan</h6>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque impedit sunt numquam, quasi eligendi, tempore maiores perferendis incidunt atque voluptatum iure vel similique, ratione dolor? Sit quas repellendus labore quo.</h5>
+                <div class="icon">
+                    <i class="fa-brands fa-react"></i>                        
+                    <i class="fa-brands fa-js"></i>                       
+                    <i class="fa-brands fa-android"></i>     
+                    <i class="fa-brands fa-node-js"></i>               
+                </div>    
+                <div class="btn">
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <script src="js/myproject.js"></script>
+    <script src="js/nav.js"></script>
+
+</body>
+</html>
