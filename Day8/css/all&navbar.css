@@ -147,6 +147,10 @@ nav div li button {
         display: none;
     }
 
+    .hamburger-container a {
+        display: none;
+    }
+
     
 
 }
