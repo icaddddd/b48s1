@@ -45,6 +45,7 @@
     border-radius: 3px;
     border-style: none;
     box-shadow: 0px 0px 3px;
+    resize: none;
 }
 
 .formmyproject .checkbox {
