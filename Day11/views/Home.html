@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Project Icad</title>
+    <link rel="icon" href="/assets/images/dumbways.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/home.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    
+  </head>
+  <body>
+
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <img src="/assets/images/dumbways.png" class="navbar-brand" href="Home " type="button" />
+          <button class="navbar-toggler" type="button" onclick="openHamburger()">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="Home ">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Project ">Add Project</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="Testimonials ">Testimonials</a>
+              </li> 
+            </ul>
+            <form class="d-flex">
+              <button class="btn btn-black text-white active"><a href="contact " class="text-decoration-none text-white">
+                Contact Me
+              </button></a>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <div class="hamburger-container" id="hamburger-container">
+        <a href="Home " class="active-hamburger btn btn-dark text-white">Home</a>
+        <a href="Project ">My Project</a>
+        <a href="contact ">Contact Me</a>
+        <a href="Testimonials ">Testimonial</a>
+      </div>
+    <!-- NavBar -->
+
+    <!-- content 1 -->
+    <div class="container">
+      <div class="card m-5 p-3">
+        <div class="row p-3 justify-content-center" id="media-850">
+          <div class="col-8 ms-0">
+            <div class="card-body">
+              <h3 class="card-title mb-4" id="welcome">Hi, Welcome to my nut!</h3>
+              <h6 class="card-text" id="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia optio, consectetur quos ullam numquam veniam sint cumque minima ab vitae ipsa odit minus necessitatibus beatae voluptatibus aperiam ducimus sapiente delectus. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem iusto sunt assumenda, quisquam est autem architecto maiores repellendus tempore saepe amet voluptatum reiciendis doloremque, quidem velit porro deserunt? Consectetur, officiis.</h6>
+              <div class="d-flex align-items-center mt-4">
+                <a href="https://wa.me/6282292535447"> 
+                        <button class="btn btn-danger text-white me-4 px-4 py-1 rounded-pill" id="contactbutton">CONTACT</button>
+                </a>
+                <a href="https://drive.google.com/file/d/1jVNUnCEgOiK5vHj_C17SruDhQn7opAmq/view?usp=sharing" class="icon-link text-decoration-none text-black font" id="cvbutton"> 
+                    Download CV 
+                    <i class="fa-solid fa-download"></i>
+                </a>
+              </div>
+              <div class="d-flex my-5" id="media-icon-850">
+                <a class="icon-link text-black text-decoration-none me-4" href="#">
+                  <i class="fa-brands fa-instagram fa-2xl"></i>
+                </a>
+                <a class="icon-link text-black text-decoration-none me-4" href="#">
+                  <i class="fa-brands fa-twitter fa-2xl"></i>
+                </a>
+                <a class="icon-link text-black text-decoration-none me-4" href="#">
+                  <i class="fa-brands fa-facebook-f fa-2xl"></i>
+                </a>
+                <a class="icon-link text-black text-decoration-none me-4" href="#">
+                  <i class="fa-brands fa-tiktok fa-2xl"></i>
+                </a>
+              </div>      
+            </div>
+          </div>
+          <div class="col card card-right me-4 align-items-center">
+            <img src="/assets/images/hmm.jpeg" class="object-fit-cover rounded" alt="">
+            <div class="text" id="tulisancard">
+              <h5>Sjaaf Rhisjad Daud Djavatri</h5>
+              <h6>Full Stack Developer</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content 1 -->
+
+    <!-- content 2 -->
+    <div class="container-fluid bg-light py-5">
+      <h3 class="text-center">My Project</h3>
+      <div class="row row-cols-3 p-5 m-2" id="grid">
+        <div class="col d-flex justify-content-center my-3" id="cardbawah">
+          <div class="card card-myproject card-card" style="width: 20rem; height: 30rem;">
+            <img src="/assets/images/hmm.jpeg" class="card-img-top object-fit-cover p-2" style="width: 100%; height: 250px;" >
+            <div class="card-body">
+              <h5 class="card-title cardtittle">Aku Hobi Main Bola</h5>
+              <p class="card-duration my-1">Durasi: 3 bulan</p>
+              <p class="cardtext my-2 overflow-hidden white-space-wrap" style="height: 7em;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam earum incidunt aut quisquam eius hic maxime laboriosam suscipit sit obcaecati. Id numquam qui illum inventore recusandae molestias placeat distinctio fuga?</p>
+              <div class="icon my-2">
+                <i class="fa-brands fa-react me-3"></i>                        
+                <i class="fa-brands fa-js me-3"></i>                       
+                <i class="fa-brands fa-android me-3"></i>     
+                <i class="fa-brands fa-node-js"></i>               
+            </div>   
+              <a href="#" class="btn btn-danger edit" style="width: 49%;">Edit</a>
+              <a href="#" class="btn btn-danger delete" style="width: 49%;">Delete</a>
+            </div>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center my-3" id="cardbawah">
+          <div class="card card-myproject card-card" style="width: 20rem; height: 30rem;">
+            <img src="/assets/images/hmm.jpeg" class="card-img-top object-fit-cover p-2" style="width: 100%; height: 250px;" >
+            <div class="card-body">
+              <h5 class="card-title cardtittle">Aku Hobi Main Bola</h5>
+              <p class="card-duration my-1">Durasi: 3 bulan</p>
+              <p class="cardtext my-2 overflow-hidden white-space-wrap" style="height: 7em;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam earum incidunt aut quisquam eius hic maxime laboriosam suscipit sit obcaecati. Id numquam qui illum inventore recusandae molestias placeat distinctio fuga?</p>
+              <div class="icon my-2">
+                <i class="fa-brands fa-react me-3"></i>                        
+                <i class="fa-brands fa-js me-3"></i>                       
+                <i class="fa-brands fa-android me-3"></i>     
+                <i class="fa-brands fa-node-js"></i>               
+            </div>   
+              <a href="#" class="btn btn-danger edit" style="width: 49%;">Edit</a>
+              <a href="#" class="btn btn-danger delete" style="width: 49%;">Delete</a>
+            </div>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center my-3" id="cardbawah">
+          <div class="card card-myproject card-card" style="width: 20rem; height: 30rem;">
+            <img src="/assets/images/hmm.jpeg" class="card-img-top object-fit-cover p-2" style="width: 100%; height: 250px;" >
+            <div class="card-body">
+              <h5 class="card-title cardtittle">Aku Hobi Main Bola</h5>
+              <p class="card-duration my-1">Durasi: 3 bulan</p>
+              <p class="cardtext my-2 overflow-hidden white-space-wrap" style="height: 7em;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam earum incidunt aut quisquam eius hic maxime laboriosam suscipit sit obcaecati. Id numquam qui illum inventore recusandae molestias placeat distinctio fuga?</p>
+              <div class="icon my-2">
+                <i class="fa-brands fa-react me-3"></i>                        
+                <i class="fa-brands fa-js me-3"></i>                       
+                <i class="fa-brands fa-android me-3"></i>     
+                <i class="fa-brands fa-node-js"></i>               
+            </div>   
+              <a href="#" class="btn btn-danger edit" style="width: 49%;">Edit</a>
+              <a href="#" class="btn btn-danger delete" style="width: 49%;">Delete</a>
+            </div>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center my-3"id="cardbawah" >
+          <div class="card card-myproject card-card" style="width: 20rem; height: 30rem;">
+            <img src="/assets/images/hmm.jpeg" class="card-img-top object-fit-cover p-2" style="width: 100%; height: 250px;" >
+            <div class="card-body">
+              <h5 class="card-title cardtittle">Aku Hobi Main Bola</h5>
+              <p class="card-duration my-1">Durasi: 3 bulan</p>
+              <p class="cardtext my-2 overflow-hidden white-space-wrap" style="height: 7em;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam earum incidunt aut quisquam eius hic maxime laboriosam suscipit sit obcaecati. Id numquam qui illum inventore recusandae molestias placeat distinctio fuga?</p>
+              <div class="icon my-2">
+                <i class="fa-brands fa-react me-3"></i>                        
+                <i class="fa-brands fa-js me-3"></i>                       
+                <i class="fa-brands fa-android me-3"></i>     
+                <i class="fa-brands fa-node-js"></i>               
+            </div>   
+              <a href="#" class="btn btn-danger edit" style="width: 49%;">Edit</a>
+              <a href="#" class="btn btn-danger delete" style="width: 49%;">Delete</a>
+            </div>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center my-3" id="cardbawah">
+          <div class="card card-myproject card-card" style="width: 20rem; height: 30rem;">
+            <img src="/assets/images/hmm.jpeg" class="card-img-top object-fit-cover p-2" style="width: 100%; height: 250px;" >
+            <div class="card-body">
+              <h5 class="card-title cardtittle">Aku Hobi Main Bola</h5>
+              <p class="card-duration my-1">Durasi: 3 bulan</p>
+              <p class="cardtext my-2 overflow-hidden white-space-wrap" style="height: 7em;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam earum incidunt aut quisquam eius hic maxime laboriosam suscipit sit obcaecati. Id numquam qui illum inventore recusandae molestias placeat distinctio fuga?</p>
+              <div class="icon my-2">
+                <i class="fa-brands fa-react me-3"></i>                        
+                <i class="fa-brands fa-js me-3"></i>                       
+                <i class="fa-brands fa-android me-3"></i>     
+                <i class="fa-brands fa-node-js"></i>               
+            </div>   
+              <a href="#" class="btn btn-danger edit" style="width: 49%;">Edit</a>
+              <a href="#" class="btn btn-danger delete" style="width: 49%;">Delete</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- content 2 -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="/assets/js/NavBar.js"></script>
+  </body>
+
+</html>
