@@ -111,8 +111,6 @@ func AddProject(c echo.Context) error {
 	fmt.Println("NodeJs", NodeJs)
 	fmt.Println("Duration", durationString)
 
-	// fmt.Println("Duration", durationString)
-
 	return c.Redirect(http.StatusMovedPermanently, "/Project")
 }
 
