@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Project Icad</title>
+    <link rel="icon" href="/assets/images/dumbways.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/project.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+  </head>
+  <body>
+
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <img src="/assets/images/dumbways.png" class="navbar-brand" type="button" />
+        <button class="navbar-toggler" type="button" onclick="openHamburger()">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/ ">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/Project ">Add Project</a>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="/Testimonials ">Testimonials</a>
+            </li> 
+          </ul>
+          <form class="d-flex">
+            <button class="btn btn-black text-white active"><a href="contact " class="text-decoration-none text-white">
+              Contact Me
+          </button></a>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="hamburger-container" id="hamburger-container">
+      <a href="/ ">Home</a>
+      <a href="Project " class="active-hamburger btn btn-dark text-white">My Project</a>
+      <a href="contact ">Contact Me</a>
+      <a href="Testimonials ">Testimonial</a>
+    </div>
+    <!-- NavBar -->
+
+    <!-- Project -->
+    <div style="margin-top: 50px; text-align:center;" id="containerbutton" class="container-fluid">
+        <a href="/FormProject"
+          style="background-color: orangered; padding: 10px 25px; color: white; text-decoration: none; border-radius: 10px" id="buttonkanan">Add
+          Blog</a>
+    </div>
+    <div class="container text-center">
+        <div class="row mt-5">
+            {{ range $index, $project := .Projects }}
+          <div class="col d-flex flex-column align-items-center justify-content-center mb-3">
+            <div class="card card-myproject card-card" style="width: 20rem; height: 33rem;">
+                <img src="/assets/images/hmm.jpeg" class="card-img-top object-fit-cover p-2" style="width: 100%; height: 250px;" >
+                <div class="card-body text-start">
+                  <h5 class="card-title">
+                    <a href="/ProjectDetail/{{$index}}" target="_blank" class="text-decoration-none text-black">{{ $project.Title }}</a>
+                  </h5>
+                  <p class="card-duration my-1">{{ $project.Duration }}</p>
+                  <p class="card-duration my-1">{{ $index }}</p>
+                  <p class="cardtext my-2 overflow-hidden white-space-wrap" style="height: 7em;">{{ $project.Content }}</p>
+                  <div class="icon my-2">
+                    <i class="fa-brands fa-react me-3"></i>                        
+                    <i class="fa-brands fa-js me-3"></i>                       
+                    <i class="fa-brands fa-android me-3"></i>     
+                    <i class="fa-brands fa-node-js"></i>            
+                </div>   
+                <div class="btn-group container-fluid justify-content-center align-items-center">
+                  <form action="/FormUpdateProject/{{$index}}" method="post">
+                    <button class="btn-edit">Edit</button>
+                </form>
+                  <form action="/DeleteProject/{{$index}}" method="post">
+                    <button class="btn-delete">Delete</button>
+                </div>
+                  </form>
+                </div>
+              </div>
+          </div>
+          {{ end }}
+      </div>
+    </div>   
+    <!-- Project -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="/assets/js/NavBar.js"></script>
+</body>
+</html>
