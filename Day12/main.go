@@ -53,7 +53,7 @@ func main() {
 	e.POST("/FormUpdateProject/:id", FormUpdateProject)
 	e.POST("/AddProject", AddProject)
 	e.POST("/DeleteProject/:id", DeleteProject)
-	e.POST("/UpdateProject/", UpdateProject)
+	e.POST("/UpdateProject", UpdateProject)
 
 	e.Logger.Fatal(e.Start("localhost: 5000"))
 }
