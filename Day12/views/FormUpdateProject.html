@@ -52,7 +52,7 @@
     <div class="container d-flex flex-column align-items-center justify-content-center">
       <h2 class="m-5">UPDATE MY PROJECT</h2>
       <form class="form mb-5" style="width: 600px;" id="width" action="/UpdateProject" method="POST"> 
-        <input type="hidden" value="{{.Project.Id}}" name="Id" id="id">
+        <input type="hidden" value="{{.Project.Id}}" name="id" id="id">
         <div class="mb-3">
           <label for="ProjectName" class="form-label">Project Name</label>
           <input type="text" class="form-control" name="title">
@@ -74,13 +74,13 @@
         <div class="row mb-3">
           <div class="col-6 mb-3">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="ReactJs" value="true">
+              <input class="form-check-input" type="checkbox" name="ReactJs" value="ReactJs">
               <label class="form-check-label" for="ReactJs">
                 ReactJs
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="Javascript" value="true">
+              <input class="form-check-input" type="checkbox" name="Javascript" value="Javascript">
               <label class="form-check-label" for="Javascript">
                 Javascript
               </label>
@@ -88,13 +88,13 @@
           </div>
           <div class="col-6">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="Android" value="true">
+              <input class="form-check-input" type="checkbox" name="Android" value="Android">
               <label class="form-check-label" for="Android">
                 Android
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="NodeJs" value="true">
+              <input class="form-check-input" type="checkbox" name="NodeJs" value="NodeJs">
               <label class="form-check-label" for="NodeJs">
                 NodeJs
               </label>

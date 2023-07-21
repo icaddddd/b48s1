@@ -32,3 +32,8 @@
 .btn-delete:hover{
     background-color: orangered;
 }
+
+.card:hover{
+    transform: scale(1.05);
+    transition: .2s;
+}

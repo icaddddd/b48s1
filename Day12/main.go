@@ -17,10 +17,10 @@ type Project struct {
 	Duration   string
 	StartDate  string
 	EndDate    string
-	ReactJs    string
-	Javascript string
-	Android    string
-	NodeJs     string
+	ReactJs    bool
+	Javascript bool
+	Android    bool
+	NodeJs     bool
 }
 
 var dataProjects = []Project{
@@ -31,10 +31,10 @@ var dataProjects = []Project{
 		Duration:   "2 Bulan",
 		StartDate:  "2000/09/08",
 		EndDate:    "2000/10/08",
-		ReactJs:    "ReactJs",
-		Javascript: "Javascript",
-		Android:    "Android",
-		NodeJs:     "NodeJs",
+		ReactJs:    true,
+		Javascript: false,
+		Android:    true,
+		NodeJs:     true,
 	},
 }
 
@@ -173,10 +173,10 @@ func AddProject(c echo.Context) error {
 		Duration:   durationString,
 		StartDate:  startdate,
 		EndDate:    enddate,
-		ReactJs:    ReactJs,
-		Javascript: Javascript,
-		Android:    Android,
-		NodeJs:     NodeJs,
+		ReactJs:    (ReactJs == "ReactJs"),
+		Javascript: (Javascript == "Javascript"),
+		Android:    (Android == "Android"),
+		NodeJs:     (NodeJs == "NodeJs"),
 	}
 
 	dataProjects = append(dataProjects, newProject)
@@ -187,10 +187,12 @@ func AddProject(c echo.Context) error {
 func formatDuration(duration time.Duration) string {
 	months := duration / (time.Hour * 24 * 30)
 	duration %= time.Hour * 24 * 30
+	weeks := duration / (time.Hour * 24 * 7)
+	duration %= time.Hour * 24 * 7
 	days := duration / (time.Hour * 24)
 	duration %= time.Hour * 24
 
-	return fmt.Sprintf("%d month, %d day", months, days)
+	return fmt.Sprintf("%d months, %d weeks, %d days", months, weeks, days)
 }
 
 func DeleteProject(c echo.Context) error {
@@ -259,10 +261,10 @@ func UpdateProject(c echo.Context) error {
 	dataProjects[id].Content = content
 	dataProjects[id].StartDate = startdate
 	dataProjects[id].EndDate = enddate
-	dataProjects[id].ReactJs = ReactJs
-	dataProjects[id].Javascript = Javascript
-	dataProjects[id].Android = Android
-	dataProjects[id].NodeJs = NodeJs
+	dataProjects[id].ReactJs = (ReactJs == "ReactJs")
+	dataProjects[id].Javascript = (Javascript == "Javascript")
+	dataProjects[id].Android = (Android == "Android")
+	dataProjects[id].NodeJs = (NodeJs == "NodeJs")
 	dataProjects[id].Duration = durationString
 
 	return c.Redirect(http.StatusMovedPermanently, "/Project")

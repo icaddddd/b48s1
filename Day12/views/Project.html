@@ -58,7 +58,7 @@
         <div class="row mt-5">
             {{ range $index, $project := .Projects }}
           <div class="col d-flex flex-column align-items-center justify-content-center mb-3">
-            <div class="card card-myproject card-card" style="width: 20rem; height: 33rem;">
+            <div class="card" style="width: 20rem; height: 33rem;">
                 <img src="/assets/images/hmm.jpeg" class="card-img-top object-fit-cover p-2" style="width: 100%; height: 250px;" >
                 <div class="card-body text-start">
                   <h5 class="card-title">
@@ -67,10 +67,15 @@
                   <p class="card-duration my-1">{{ $project.Duration }}</p>
                   <p class="cardtext my-2 overflow-hidden white-space-wrap" style="height: 7em;">{{ $project.Content }}</p>
                   <div class="icon my-2">
-                    <i class="fa-brands fa-react me-3"></i>                        
-                    <i class="fa-brands fa-js me-3"></i>                       
-                    <i class="fa-brands fa-android me-3"></i>     
-                    <i class="fa-brands fa-node-js"></i>            
+                    {{ if $project.ReactJs }}
+                    <i class="fa-brands fa-react me-3"></i>
+                    {{end}} {{ if $project.Javascript }}                   
+                    <i class="fa-brands fa-js me-3"></i>
+                    {{end}} {{ if $project.Android }}                       
+                    <i class="fa-brands fa-android me-3"></i>   
+                    {{end}} {{ if $project.NodeJs }}  
+                    <i class="fa-brands fa-node-js"></i>
+                    {{end}}            
                 </div>   
                 <div class="btn-group container-fluid justify-content-center align-items-center">
                   <form action="/FormUpdateProject/{{$index}}" method="post">
