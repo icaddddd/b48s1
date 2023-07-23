@@ -70,6 +70,25 @@ func home(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 
+	return tmpl.Execute(c.Response(), nil)
+}
+
+func contact(c echo.Context) error {
+	tmpl, err := template.ParseFiles("views/contact.html")
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
+
+	return tmpl.Execute(c.Response(), nil)
+}
+
+func project(c echo.Context) error {
+	tmpl, err := template.ParseFiles("views/Project.html")
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
 	data, _ := connection.Conn.Query(context.Background(), "SELECT id, title, image, start_date, end_date, content, technologies FROM tb_project")
 
 	dataProjects = []Project{}
@@ -104,30 +123,6 @@ func home(c echo.Context) error {
 	}
 
 	return tmpl.Execute(c.Response(), projects)
-}
-
-func contact(c echo.Context) error {
-	tmpl, err := template.ParseFiles("views/contact.html")
-
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err.Error())
-	}
-
-	return tmpl.Execute(c.Response(), nil)
-}
-
-func project(c echo.Context) error {
-	tmpl, err := template.ParseFiles("views/Project.html")
-
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err.Error())
-	}
-
-	data := map[string]interface{}{
-		"Projects": dataProjects,
-	}
-
-	return tmpl.Execute(c.Response(), data)
 }
 
 func FormProject(c echo.Context) error {
