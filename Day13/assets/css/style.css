@@ -1,0 +1,50 @@
+body {
+    background-color: lightgrey;
+}
+
+.container-fluid img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.nav-link {
+    color: black;
+}
+
+.nav-link:hover {
+    color: orangered;
+}
+
+.active {
+    font-weight: bold; 
+}
+
+.btn-black {
+    background-color: black !important;
+    border-style: none;
+}
+
+.button{
+    background-color: orangered !important;
+}
+
+.hamburger-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #D3D3D3;
+    display: none;
+}
+
+.hamburger-container a{
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+    text-align: center;
+}
+
+.active-hamburger{
+    width: 150px;
+}

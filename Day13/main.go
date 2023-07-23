@@ -1,7 +1,8 @@
 package main
 
 import (
-	"fmt"
+	"context"
+	"day10/connection"
 	"html/template"
 	"net/http"
 	"strconv"
@@ -11,35 +12,39 @@ import (
 )
 
 type Project struct {
-	Id         int
-	Title      string
-	Content    string
-	Duration   string
-	StartDate  string
-	EndDate    string
-	ReactJs    bool
-	Javascript bool
-	Android    bool
-	NodeJs     bool
+	Id           int
+	Title        string
+	Content      string
+	Duration     string
+	StartDate    time.Time
+	EndDate      time.Time
+	Technologies []string
+	ReactJs      bool
+	Javascript   bool
+	Android      bool
+	NodeJs       bool
+	Image        string
 }
 
 var dataProjects = []Project{
-	{
-		Id:         0,
-		Title:      "aku suka main bola",
-		Content:    "aku suka main bola",
-		Duration:   "2 Bulan",
-		StartDate:  "2000/09/08",
-		EndDate:    "2000/10/08",
-		ReactJs:    true,
-		Javascript: false,
-		Android:    true,
-		NodeJs:     true,
-	},
+	// {
+	// 	Id:         0,
+	// 	Title:      "aku suka main bola",
+	// 	Content:    "aku suka main bola",
+	// 	Duration:   "2 Bulan",
+	// 	StartDate:  "2000/09/08",
+	// 	EndDate:    "2000/10/08",
+	// 	ReactJs:    true,
+	// 	Javascript: false,
+	// 	Android:    true,
+	// 	NodeJs:     true,
+	// },
 }
 
 func main() {
 	e := echo.New()
+
+	connection.DatabaseConnect()
 
 	e.Static("/assets", "assets")
 
@@ -59,13 +64,46 @@ func main() {
 }
 
 func home(c echo.Context) error {
-	tmpl, err := template.ParseFiles("views/home.html")
+	var tmpl, err = template.ParseFiles("views/Home.html")
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 
-	return tmpl.Execute(c.Response(), nil)
+	data, _ := connection.Conn.Query(context.Background(), "SELECT id, title, image, start_date, end_date, content, technologies FROM tb_project")
+
+	dataProjects = []Project{}
+	for data.Next() {
+		var each = Project{}
+
+		err := data.Scan(&each.Id, &each.Title, &each.Image, &each.StartDate, &each.EndDate, &each.Content, &each.Technologies)
+		if err != nil {
+			return c.JSON(http.StatusInternalServerError, err.Error())
+		}
+
+		each.Duration = countDuration(each.StartDate, each.EndDate)
+
+		if checkValue(each.Technologies, "ReactJs") {
+			each.ReactJs = true
+		}
+		if checkValue(each.Technologies, "Javascript") {
+			each.Javascript = true
+		}
+		if checkValue(each.Technologies, "Android") {
+			each.Android = true
+		}
+		if checkValue(each.Technologies, "NodeJs") {
+			each.NodeJs = true
+		}
+
+		dataProjects = append(dataProjects, each)
+	}
+
+	projects := map[string]interface{}{
+		"Projects": dataProjects,
+	}
+
+	return tmpl.Execute(c.Response(), projects)
 }
 
 func contact(c echo.Context) error {
@@ -143,8 +181,10 @@ func ProjectDetail(c echo.Context) error {
 	}
 
 	data := map[string]interface{}{
-		"Id":      id,
-		"Project": ProjectDetail,
+		"Id":              id,
+		"Project":         ProjectDetail,
+		"startDateString": ProjectDetail.StartDate.Format("2006-01-02"),
+		"endDateString":   ProjectDetail.EndDate.Format("2006-01-02"),
 	}
 
 	return tmpl.Execute(c.Response(), data)
@@ -162,16 +202,15 @@ func AddProject(c echo.Context) error {
 
 	start, _ := time.Parse("2006-01-02", startdate)
 	end, _ := time.Parse("2006-01-02", enddate)
-	duration := end.Sub(start)
 
-	durationString := formatDuration(duration)
+	durationString := countDuration(start, end)
 
 	newProject := Project{
 		Title:      title,
 		Content:    content,
 		Duration:   durationString,
-		StartDate:  startdate,
-		EndDate:    enddate,
+		StartDate:  start,
+		EndDate:    end,
 		ReactJs:    (ReactJs == "ReactJs"),
 		Javascript: (Javascript == "Javascript"),
 		Android:    (Android == "Android"),
@@ -181,23 +220,6 @@ func AddProject(c echo.Context) error {
 	dataProjects = append(dataProjects, newProject)
 
 	return c.Redirect(http.StatusMovedPermanently, "/Project")
-}
-
-func formatDuration(duration time.Duration) string {
-	months := duration / (time.Hour * 24 * 30)
-	duration %= time.Hour * 24 * 30
-	weeks := duration / (time.Hour * 24 * 7)
-	duration %= time.Hour * 24 * 7
-	days := duration / (time.Hour * 24)
-	duration %= time.Hour * 24
-
-	if months > 0 {
-		return fmt.Sprintf("%d bulan", months)
-	}
-	if weeks > 0 {
-		return fmt.Sprintf("%d minggu", weeks)
-	}
-	return fmt.Sprintf("%d hari", days)
 }
 
 func DeleteProject(c echo.Context) error {
@@ -258,14 +280,13 @@ func UpdateProject(c echo.Context) error {
 
 	start, _ := time.Parse("2006-01-02", startdate)
 	end, _ := time.Parse("2006-01-02", enddate)
-	duration := end.Sub(start)
 
-	durationString := formatDuration(duration)
+	durationString := countDuration(start, end)
 
 	dataProjects[id].Title = title
 	dataProjects[id].Content = content
-	dataProjects[id].StartDate = startdate
-	dataProjects[id].EndDate = enddate
+	dataProjects[id].StartDate = start
+	dataProjects[id].EndDate = end
 	dataProjects[id].ReactJs = (ReactJs == "ReactJs")
 	dataProjects[id].Javascript = (Javascript == "Javascript")
 	dataProjects[id].Android = (Android == "Android")
@@ -274,4 +295,32 @@ func UpdateProject(c echo.Context) error {
 
 	return c.Redirect(http.StatusMovedPermanently, "/Project")
 
+}
+
+func countDuration(d1 time.Time, d2 time.Time) string {
+
+	diff := d2.Sub(d1)
+	days := int(diff.Hours() / 24)
+	weeks := days / 7
+	months := days / 30
+
+	if months >= 12 {
+		return strconv.Itoa(months/12) + " tahun"
+	}
+	if months > 0 {
+		return strconv.Itoa(months) + " bulan"
+	}
+	if weeks > 0 {
+		return strconv.Itoa(weeks) + " minggu"
+	}
+	return strconv.Itoa(days) + " hari"
+}
+
+func checkValue(slice []string, object string) bool {
+	for _, data := range slice {
+		if data == object {
+			return true
+		}
+	}
+	return false
 }
