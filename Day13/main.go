@@ -171,6 +171,7 @@ func ProjectDetail(c echo.Context) error {
 				Javascript: data.Javascript,
 				Android:    data.Android,
 				NodeJs:     data.NodeJs,
+				Image:      data.Image,
 			}
 		}
 	}
