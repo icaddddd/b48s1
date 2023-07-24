@@ -55,21 +55,21 @@
         <input type="hidden" value="{{.Project.Id}}" name="id" id="id">
         <div class="mb-3">
           <label for="ProjectName" class="form-label">Project Name</label>
-          <input type="text" class="form-control" name="title">
+          <input type="text" class="form-control" name="title" value="{{.Project.Title}}">
         </div>
         <div class="row mb-3">
           <div class="col">
             <label for="StartDate" class="form-label">Start Date</label>
-            <input type="date" class="form-control" name="startdate">
+            <input type="date" class="form-control" name="startdate" value="{{.Project.StartDate}}">
           </div>
           <div class="col">
             <label for="End Date" class="form-label">End Date</label>
-            <input type="date" class="form-control" name="enddate">
+            <input type="date" class="form-control" name="enddate" value="{{.Project.EndDate}}">
           </div>
         </div>
         <div class="mb-3">
           <label for="Description" class="form-label">Description</label>
-          <textarea class="form-control" name="content" style="resize: none; height: 100px;"></textarea>
+          <textarea class="form-control" name="content" style="resize: none; height: 100px;"> {{.Project.Content}} </textarea>
         </div>
         <div class="row mb-3">
           <div class="col-6 mb-3">

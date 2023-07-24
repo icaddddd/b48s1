@@ -16,6 +16,7 @@ func DatabaseConnect() {
 	databaseUrl := "postgres://postgres:sjfrhsjd@localhost:5432/postgres"
 
 	Conn, err = pgx.Connect(context.Background(), databaseUrl)
+
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
 		os.Exit(1)
