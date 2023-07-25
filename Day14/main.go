@@ -26,20 +26,20 @@ type Project struct {
 	Image        string
 }
 
-var dataProjects = []Project{
-	// {
-	// 	Id:         0,
-	// 	Title:      "aku suka main bola",
-	// 	Content:    "aku suka main bola",
-	// 	Duration:   "2 Bulan",
-	// 	StartDate:  "2000/09/08",
-	// 	EndDate:    "2000/10/08",
-	// 	ReactJs:    true,
-	// 	Javascript: false,
-	// 	Android:    true,
-	// 	NodeJs:     true,
-	// },
-}
+// var dataProjects = []Project{
+// {
+// 	Id:         0,
+// 	Title:      "aku suka main bola",
+// 	Content:    "aku suka main bola",
+// 	Duration:   "2 Bulan",
+// 	StartDate:  "2000/09/08",
+// 	EndDate:    "2000/10/08",
+// 	ReactJs:    true,
+// 	Javascript: false,
+// 	// 	Android:    true,
+// 	// 	NodeJs:     true,
+// 	// },
+// }
 
 func main() {
 	e := echo.New()
@@ -111,7 +111,7 @@ func project(c echo.Context) error {
 	}
 	data, _ := connection.Conn.Query(context.Background(), "SELECT id, title, image, start_date, end_date, content, technologies FROM tb_project")
 
-	dataProjects = []Project{}
+	dataProjects := []Project{}
 	for data.Next() {
 		var each = Project{}
 
@@ -158,22 +158,25 @@ func ProjectDetail(c echo.Context) error {
 
 	ProjectDetail := Project{}
 
-	for index, data := range dataProjects {
-		if index == idToInt {
-			ProjectDetail = Project{
-				Id:         index,
-				Title:      data.Title,
-				Content:    data.Content,
-				Duration:   data.Duration,
-				StartDate:  data.StartDate,
-				EndDate:    data.EndDate,
-				ReactJs:    data.ReactJs,
-				Javascript: data.Javascript,
-				Android:    data.Android,
-				NodeJs:     data.NodeJs,
-				Image:      data.Image,
-			}
-		}
+	errQuery := connection.Conn.QueryRow(context.Background(), "SELECT * FROM tb_project WHERE id=$1", idToInt).Scan(&ProjectDetail.Id, &ProjectDetail.Title, &ProjectDetail.Image, &ProjectDetail.StartDate, &ProjectDetail.EndDate, &ProjectDetail.Content, &ProjectDetail.Technologies)
+
+	if errQuery != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
+
+	ProjectDetail.Duration = countDuration(ProjectDetail.StartDate, ProjectDetail.EndDate)
+
+	if checkValue(ProjectDetail.Technologies, "ReactJs") {
+		ProjectDetail.ReactJs = true
+	}
+	if checkValue(ProjectDetail.Technologies, "Javascript") {
+		ProjectDetail.Javascript = true
+	}
+	if checkValue(ProjectDetail.Technologies, "Android") {
+		ProjectDetail.Android = true
+	}
+	if checkValue(ProjectDetail.Technologies, "NodeJs") {
+		ProjectDetail.NodeJs = true
 	}
 
 	data := map[string]interface{}{
@@ -188,32 +191,20 @@ func ProjectDetail(c echo.Context) error {
 
 func AddProject(c echo.Context) error {
 	title := c.FormValue("title")
-	content := c.FormValue("content")
+	image := c.FormValue("image")
 	startdate := c.FormValue("startdate")
 	enddate := c.FormValue("enddate")
-	ReactJs := c.FormValue("ReactJs")
-	Javascript := c.FormValue("Javascript")
-	Android := c.FormValue("Android")
-	NodeJs := c.FormValue("NodeJs")
+	content := c.FormValue("content")
+	technoReactJs := c.FormValue("ReactJs")
+	technoJavascript := c.FormValue("Javascript")
+	technoAndroid := c.FormValue("Android")
+	technoNodeJs := c.FormValue("NodeJs")
 
-	start, _ := time.Parse("2006-01-02", startdate)
-	end, _ := time.Parse("2006-01-02", enddate)
+	_, err := connection.Conn.Exec(context.Background(), "INSERT INTO tb_project (title, image, start_date, end_date, content, technologies[1], technologies[2], technologies[3], technologies[4]) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)", title, image, startdate, enddate, content, technoReactJs, technoJavascript, technoAndroid, technoNodeJs)
 
-	durationString := countDuration(start, end)
-
-	newProject := Project{
-		Title:      title,
-		Content:    content,
-		Duration:   durationString,
-		StartDate:  start,
-		EndDate:    end,
-		ReactJs:    (ReactJs == "ReactJs"),
-		Javascript: (Javascript == "Javascript"),
-		Android:    (Android == "Android"),
-		NodeJs:     (NodeJs == "NodeJs"),
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, err.Error())
 	}
-
-	dataProjects = append(dataProjects, newProject)
 
 	return c.Redirect(http.StatusMovedPermanently, "/Project")
 }
@@ -223,71 +214,74 @@ func DeleteProject(c echo.Context) error {
 
 	idToInt, _ := strconv.Atoi(id)
 
-	dataProjects = append(dataProjects[:idToInt], dataProjects[idToInt+1:]...)
+	connection.Conn.Exec(context.Background(), "DELETE FROM tb_project WHERE id=$1", idToInt)
 
 	return c.Redirect(http.StatusMovedPermanently, "/Project")
 }
 
 func FormUpdateProject(c echo.Context) error {
-	id, _ := strconv.Atoi(c.Param("id"))
+	id := c.Param("id")
 
-	ProjectToUpdate := Project{}
-
-	for index, data := range dataProjects {
-		if id == index {
-			ProjectToUpdate = Project{
-				Id:         index,
-				Title:      data.Title,
-				Content:    data.Content,
-				Duration:   data.Duration,
-				StartDate:  data.StartDate,
-				EndDate:    data.EndDate,
-				ReactJs:    data.ReactJs,
-				Javascript: data.Javascript,
-				Android:    data.Android,
-				NodeJs:     data.NodeJs,
-			}
-		}
-	}
-
-	data := map[string]interface{}{
-		"Project": ProjectToUpdate,
-	}
-
-	var tmpl, err = template.ParseFiles("views/FormUpdateProject.html")
+	tmpl, err := template.ParseFiles("views/FormUpdateProject.html")
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": "Project Not Found"})
+	}
+
+	idToInt, _ := strconv.Atoi(id)
+
+	ProjectDetail := Project{}
+
+	errQuery := connection.Conn.QueryRow(context.Background(), "SELECT * FROM tb_project WHERE id=$1", idToInt).Scan(&ProjectDetail.Id, &ProjectDetail.Title, &ProjectDetail.Image, &ProjectDetail.StartDate, &ProjectDetail.EndDate, &ProjectDetail.Content, &ProjectDetail.Technologies)
+
+	if errQuery != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
+
+	ProjectDetail.Duration = countDuration(ProjectDetail.StartDate, ProjectDetail.EndDate)
+
+	if checkValue(ProjectDetail.Technologies, "ReactJs") {
+		ProjectDetail.ReactJs = true
+	}
+	if checkValue(ProjectDetail.Technologies, "Javascript") {
+		ProjectDetail.Javascript = true
+	}
+	if checkValue(ProjectDetail.Technologies, "Android") {
+		ProjectDetail.Android = true
+	}
+	if checkValue(ProjectDetail.Technologies, "NodeJs") {
+		ProjectDetail.NodeJs = true
+	}
+
+	data := map[string]interface{}{
+		"Id":              id,
+		"Project":         ProjectDetail,
+		"startDateString": ProjectDetail.StartDate.Format("2006-01-02"),
+		"endDateString":   ProjectDetail.EndDate.Format("2006-01-02"),
 	}
 
 	return tmpl.Execute(c.Response(), data)
 }
 
 func UpdateProject(c echo.Context) error {
-	id, _ := strconv.Atoi(c.FormValue("id"))
+	id := c.FormValue("id")
 	title := c.FormValue("title")
-	content := c.FormValue("content")
+	image := c.FormValue("image")
 	startdate := c.FormValue("startdate")
 	enddate := c.FormValue("enddate")
-	ReactJs := c.FormValue("ReactJs")
-	Javascript := c.FormValue("Javascript")
-	Android := c.FormValue("Android")
-	NodeJs := c.FormValue("NodeJs")
+	content := c.FormValue("content")
+	technoReactJs := c.FormValue("ReactJs")
+	technoJavascript := c.FormValue("Javascript")
+	technoAndroid := c.FormValue("Android")
+	technoNodeJs := c.FormValue("NodeJs")
 
-	start, _ := time.Parse("2006-01-02", startdate)
-	end, _ := time.Parse("2006-01-02", enddate)
+	_, err := strconv.Atoi(id)
 
-	durationString := countDuration(start, end)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
 
-	dataProjects[id].Title = title
-	dataProjects[id].Content = content
-	dataProjects[id].StartDate = start
-	dataProjects[id].EndDate = end
-	dataProjects[id].ReactJs = (ReactJs == "ReactJs")
-	dataProjects[id].Javascript = (Javascript == "Javascript")
-	dataProjects[id].Android = (Android == "Android")
-	dataProjects[id].NodeJs = (NodeJs == "NodeJs")
-	dataProjects[id].Duration = durationString
+	connection.Conn.Exec(context.Background(), "UPDATE tb_project SET title=$1, image=$2, start_date=$3, end_date=$4, content=$5, technologies[1]=$6, technologies[2]=$7, technologies[3]=$8, technologies[4]=$9 WHERE id=$10", title, image, startdate, enddate, content, technoReactJs, technoJavascript, technoAndroid, technoNodeJs, id)
 
 	return c.Redirect(http.StatusMovedPermanently, "/Project")
 

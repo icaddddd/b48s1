@@ -1,0 +1,39 @@
+.btn-group{
+    width: 100%;
+}
+
+.btn-group form{
+    width: 50%;
+    text-align: center;
+}
+
+.btn-edit{
+    width: 90%;
+    border-style: none;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    padding: 5px 0px;
+}
+
+.btn-edit:hover{
+    background-color: orangered;
+}
+
+.btn-delete{
+    width: 90%;
+    border-style: none;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    padding: 5px 0px;
+}
+
+.btn-delete:hover{
+    background-color: orangered;
+}
+
+.card:hover{
+    transform: scale(1.05);
+    transition: .2s;
+}
