@@ -82,7 +82,21 @@ func home(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 
-	return tmpl.Execute(c.Response(), nil)
+	session, _ := session.Get("session", c)
+
+	if session.Values["isLogin"] != true {
+		userData.IsLogin = false
+	} else {
+		userData.IsLogin = session.Values["isLogin"].(bool)
+		userData.Name = session.Values["name"].(string)
+	}
+
+	dataSession := map[string]interface{}{
+		"dataSession": userData,
+	}
+
+	return tmpl.Execute(c.Response(), dataSession)
+
 }
 
 func contact(c echo.Context) error {
@@ -138,7 +152,20 @@ func Testimonials(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 
-	return tmpl.Execute(c.Response(), nil)
+	session, _ := session.Get("session", c)
+
+	if session.Values["isLogin"] != true {
+		userData.IsLogin = false
+	} else {
+		userData.IsLogin = session.Values["isLogin"].(bool)
+		userData.Name = session.Values["name"].(string)
+	}
+
+	dataSession := map[string]interface{}{
+		"dataSession": userData,
+	}
+
+	return tmpl.Execute(c.Response(), dataSession)
 }
 
 func project(c echo.Context) error {
@@ -382,14 +409,27 @@ func checkValue(slice []string, object string) bool {
 	return false
 }
 
+// auth and session
+
 func FormLogin(c echo.Context) error {
+	session, _ := session.Get("session", c)
+
+	messageFlash := map[string]interface{}{
+		"FlashStatus":  session.Values["status"],
+		"FlashMessage": session.Values["message"],
+	}
+
 	var tmpl, err = template.ParseFiles("views/login.html")
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 
-	return tmpl.Execute(c.Response(), nil)
+	delete(session.Values, "status")
+	delete(session.Values, "message")
+	session.Save(c.Request(), c.Response())
+
+	return tmpl.Execute(c.Response(), messageFlash)
 }
 
 func FormRegister(c echo.Context) error {
@@ -401,8 +441,6 @@ func FormRegister(c echo.Context) error {
 
 	return tmpl.Execute(c.Response(), nil)
 }
-
-// auth and session
 
 func redirectMessage(c echo.Context, message string, status bool, path string) error {
 	session, _ := session.Get("session", c)
@@ -473,5 +511,5 @@ func loginUser(c echo.Context) error {
 	session.Values["isLogin"] = true // access login
 	session.Save(c.Request(), c.Response())
 
-	return redirectMessage(c, "Login Succes", true, "/")
+	return redirectMessage(c, "Login Succes", true, "/Project")
 }
