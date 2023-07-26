@@ -1,0 +1,131 @@
+.card-right{
+    padding: 0;
+    margin: 0;
+    box-shadow: 0px 5px 10px;
+    border-style: none;
+}
+
+.card-text{
+    text-align: justify;
+}
+
+.object-fit-cover{
+    width: 100%;
+}
+
+.font{
+    font-size: 20px;
+}
+
+.cardtittle{
+    margin-bottom: 5px !important;
+}
+
+.card-duration{
+    font-size: 12px;
+}
+
+.cardtext{
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.card-myproject:hover{
+    transition-duration: .2s;
+    transform: scale(1.05);
+}
+
+.btn-danger{
+    background-color: #111727;
+    border-style: none;
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    margin: 20px;
+    text-align: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+@media only screen and (max-width: 850px){
+    #media-850{
+        display: flex;
+        align-items: center;
+    }
+    
+    .card-right{
+        margin-left: 25px;
+    }
+
+    .col-8{
+        width: 100%;
+    }
+
+    #media-icon-850{
+        display: flex;
+        justify-content: center;
+    }
+
+    .edit{
+        width: 48% !important;
+    }
+
+    .delete{
+        width: 48% !important;
+    }
+
+    .card-card{
+        height: 400px !important;
+    }
+
+    .cardtittle{
+        font-size: 14px;
+    }
+
+    .card-duration {
+        font-size: 10px;
+    }
+
+    .cardtext{
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width:450px){
+    #welcome{
+        font-size: 20px;
+    }
+
+    #text{
+        font-size: 14px;
+    }
+
+    #contactbutton{
+        font-size: 12px;
+    }
+
+    #cvbutton{
+        font-size: 13px;
+    }
+
+   #grid{
+    padding: 10px !important;
+    display: grid !important;
+   }
+
+   #cardbawah {
+    width: 100%;
+   }
+
+   .card-img-top {
+    height: 160px !important;
+   }
+
+   #tulisancard{
+    margin: 2px !important;
+   }
+
+}
