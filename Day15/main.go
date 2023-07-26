@@ -442,24 +442,6 @@ func FormRegister(c echo.Context) error {
 	return tmpl.Execute(c.Response(), nil)
 }
 
-func redirectMessage(c echo.Context, message string, status bool, path string) error {
-	session, _ := session.Get("session", c)
-	session.Values["message"] = message
-	session.Values["status"] = status
-	session.Save(c.Request(), c.Response())
-
-	return c.Redirect(http.StatusSeeOther, path)
-}
-
-func logout(c echo.Context) error {
-	session, _ := session.Get("session", c)
-	session.Options.MaxAge = -1
-	session.Values["isLogin"] = false
-	session.Save(c.Request(), c.Response())
-
-	return c.Redirect(http.StatusTemporaryRedirect, "/")
-}
-
 func registerUser(c echo.Context) error {
 	err := c.Request().ParseForm()
 	if err != nil {
@@ -512,4 +494,22 @@ func loginUser(c echo.Context) error {
 	session.Save(c.Request(), c.Response())
 
 	return redirectMessage(c, "Login Succes", true, "/Project")
+}
+
+func redirectMessage(c echo.Context, message string, status bool, path string) error {
+	session, _ := session.Get("session", c)
+	session.Values["message"] = message
+	session.Values["status"] = status
+	session.Save(c.Request(), c.Response())
+
+	return c.Redirect(http.StatusSeeOther, path)
+}
+
+func logout(c echo.Context) error {
+	session, _ := session.Get("session", c)
+	session.Options.MaxAge = -1
+	session.Values["isLogin"] = false
+	session.Save(c.Request(), c.Response())
+
+	return c.Redirect(http.StatusTemporaryRedirect, "/")
 }

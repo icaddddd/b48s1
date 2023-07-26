@@ -34,8 +34,8 @@
           </ul>
           <form class="d-flex">
             {{if .dataSession.IsLogin}}
-            <a class="nav-link me-3" href="# ">Halo, {{.dataSession.Name}}</a>
-            <a class="nav-link me-3" href="/logout " id="logout">Logout</a>
+            <a class="nav-link me-3" href="# " id="register">Halo, {{.dataSession.Name}}</a>
+            <a class="nav-link me-3" href="/logout " id="register">Logout</a>
             {{else}}
             <a class="nav-link me-3" href="/FormRegister " id="register">Register</a>
             <a class="nav-link me-3 active" href="/FormLogin " id="login">Login</a> 
