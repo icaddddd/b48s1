@@ -59,6 +59,7 @@
 
     <!-- Form My Project -->
     <div class="container d-flex flex-column align-items-center justify-content-center">
+      {{if .dataSession.IsLogin}}
       <h2 class="m-5">UPDATE MY PROJECT</h2>
       <form class="form mb-5" style="width: 600px;" id="width" action="/UpdateProject" method="POST"> 
         <input type="hidden" value="{{.Id}}" name="id" id="id">
@@ -120,6 +121,9 @@
           </div>
         </div>
       </form>
+      {{else}}
+      <div style="display: none;"></div>
+      {{end}}
     </div>
     <!-- Form My Project -->
 

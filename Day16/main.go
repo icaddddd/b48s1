@@ -237,7 +237,6 @@ func project(c echo.Context) error {
 }
 
 func ProjectDetail(c echo.Context) error {
-	id := c.Param("id")
 
 	tmpl, err := template.ParseFiles("views/ProjectDetail.html")
 
@@ -245,11 +244,22 @@ func ProjectDetail(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 
+	session, _ := session.Get("session", c)
+
+	if session.Values["isLogin"] != true {
+		userData.IsLogin = false
+	} else {
+		userData.IsLogin = session.Values["isLogin"].(bool)
+		userData.Name = session.Values["name"].(string)
+	}
+
+	id := c.Param("id")
+
 	idToInt, _ := strconv.Atoi(id)
 
 	ProjectDetail := Project{}
 
-	errQuery := connection.Conn.QueryRow(context.Background(), "SELECT tb_project.id, title, image, start_date, end_date, content, technologies, author, tb_user.id FROM tb_project LEFT JOIN tb_user ON tb_project.author = tb_user.id WHERE tb_user.id=$1", idToInt).Scan(&ProjectDetail.Id, &ProjectDetail.Title, &ProjectDetail.Image, &ProjectDetail.StartDate, &ProjectDetail.EndDate, &ProjectDetail.Content, &ProjectDetail.Technologies, &ProjectDetail.Author)
+	errQuery := connection.Conn.QueryRow(context.Background(), "SELECT tb_project.id, title, image, start_date, end_date, content, technologies, tb_user.name AS author, tb_user.id FROM tb_project LEFT JOIN tb_user ON tb_project.author = tb_user.id WHERE tb_user.id = $1;", idToInt).Scan(&ProjectDetail.Id, &ProjectDetail.Title, &ProjectDetail.Image, &ProjectDetail.StartDate, &ProjectDetail.EndDate, &ProjectDetail.Content, &ProjectDetail.Technologies, &ProjectDetail.Author)
 
 	if errQuery != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
@@ -268,15 +278,6 @@ func ProjectDetail(c echo.Context) error {
 	}
 	if checkValue(ProjectDetail.Technologies, "NodeJs") {
 		ProjectDetail.NodeJs = true
-	}
-
-	session, _ := session.Get("session", c)
-
-	if session.Values["isLogin"] != true {
-		userData.IsLogin = false
-	} else {
-		userData.IsLogin = session.Values["isLogin"].(bool)
-		userData.Name = session.Values["name"].(string)
 	}
 
 	data := map[string]interface{}{
@@ -444,7 +445,7 @@ func FormLogin(c echo.Context) error {
 	session, _ := session.Get("session", c)
 
 	if session.Values["isLogin"] == true {
-		return c.Redirect(http.StatusMovedPermanently, "/")
+		return c.Redirect(http.StatusTemporaryRedirect, "/")
 	}
 
 	messageFlash := map[string]interface{}{

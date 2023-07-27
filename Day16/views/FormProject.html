@@ -59,6 +59,7 @@
 
     <!-- Form My Project -->
     <div class="container d-flex flex-column align-items-center justify-content-center">
+      {{if .dataSession.IsLogin}}
       <h2 class="m-5">ADD MY PROJECT</h2>
       <form class="form mb-5" style="width: 600px;" id="width" action="/AddProject" method="POST"> 
         <div class="mb-3">
@@ -119,6 +120,9 @@
           </div>
         </div>
       </form>
+      {{else}}
+      <div style="display: none;"></div>
+      {{end}}
     </div>
     <!-- Form My Project -->
 
