@@ -81,6 +81,7 @@ func main() {
 	e.Logger.Fatal(e.Start("localhost: 5000"))
 }
 
+// menampilkan home
 func home(c echo.Context) error {
 	var tmpl, err = template.ParseFiles("views/Home.html")
 
@@ -105,6 +106,7 @@ func home(c echo.Context) error {
 
 }
 
+// menampilkan contact
 func contact(c echo.Context) error {
 	tmpl, err := template.ParseFiles("views/contact.html")
 
@@ -128,6 +130,7 @@ func contact(c echo.Context) error {
 	return tmpl.Execute(c.Response(), dataSession)
 }
 
+// menampilkan form add project
 func FormProject(c echo.Context) error {
 	tmpl, err := template.ParseFiles("views/FormProject.html")
 
@@ -151,6 +154,7 @@ func FormProject(c echo.Context) error {
 	return tmpl.Execute(c.Response(), dataSession)
 }
 
+// menampilkan testimonials
 func Testimonials(c echo.Context) error {
 	tmpl, err := template.ParseFiles("views/Testimonials.html")
 
@@ -174,6 +178,7 @@ func Testimonials(c echo.Context) error {
 	return tmpl.Execute(c.Response(), dataSession)
 }
 
+// menampilkan project
 func project(c echo.Context) error {
 	tmpl, err := template.ParseFiles("views/Project.html")
 
@@ -238,6 +243,7 @@ func project(c echo.Context) error {
 	return tmpl.Execute(c.Response(), projects)
 }
 
+// menampilkan project detail
 func ProjectDetail(c echo.Context) error {
 
 	tmpl, err := template.ParseFiles("views/ProjectDetail.html")
@@ -293,39 +299,7 @@ func ProjectDetail(c echo.Context) error {
 	return tmpl.Execute(c.Response(), data)
 }
 
-func AddProject(c echo.Context) error {
-	session, _ := session.Get("session", c)
-
-	title := c.FormValue("title")
-	image := c.Get("dataFile").(string)
-	startdate := c.FormValue("startdate")
-	enddate := c.FormValue("enddate")
-	content := c.FormValue("content")
-	technoReactJs := c.FormValue("ReactJs")
-	technoJavascript := c.FormValue("Javascript")
-	technoAndroid := c.FormValue("Android")
-	technoNodeJs := c.FormValue("NodeJs")
-	author := session.Values["id"]
-
-	_, err := connection.Conn.Exec(context.Background(), "INSERT INTO tb_project (title, image, start_date, end_date, content, technologies[1], technologies[2], technologies[3], technologies[4], author) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)", title, image, startdate, enddate, content, technoReactJs, technoJavascript, technoAndroid, technoNodeJs, author)
-
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, err.Error())
-	}
-
-	return c.Redirect(http.StatusMovedPermanently, "/Project")
-}
-
-func DeleteProject(c echo.Context) error {
-	id := c.Param("id")
-
-	idToInt, _ := strconv.Atoi(id)
-
-	connection.Conn.Exec(context.Background(), "DELETE FROM tb_project WHERE id=$1", idToInt)
-
-	return c.Redirect(http.StatusMovedPermanently, "/Project")
-}
-
+// menampilkan form update project
 func FormUpdateProject(c echo.Context) error {
 	id := c.Param("id")
 
@@ -380,6 +354,42 @@ func FormUpdateProject(c echo.Context) error {
 	return tmpl.Execute(c.Response(), data)
 }
 
+// fungsi add project
+func AddProject(c echo.Context) error {
+	session, _ := session.Get("session", c)
+
+	title := c.FormValue("title")
+	image := c.Get("dataFile").(string)
+	startdate := c.FormValue("startdate")
+	enddate := c.FormValue("enddate")
+	content := c.FormValue("content")
+	technoReactJs := c.FormValue("ReactJs")
+	technoJavascript := c.FormValue("Javascript")
+	technoAndroid := c.FormValue("Android")
+	technoNodeJs := c.FormValue("NodeJs")
+	author := session.Values["id"]
+
+	_, err := connection.Conn.Exec(context.Background(), "INSERT INTO tb_project (title, image, start_date, end_date, content, technologies[1], technologies[2], technologies[3], technologies[4], author) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)", title, image, startdate, enddate, content, technoReactJs, technoJavascript, technoAndroid, technoNodeJs, author)
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, err.Error())
+	}
+
+	return c.Redirect(http.StatusMovedPermanently, "/Project")
+}
+
+// fungsi delete project
+func DeleteProject(c echo.Context) error {
+	id := c.Param("id")
+
+	idToInt, _ := strconv.Atoi(id)
+
+	connection.Conn.Exec(context.Background(), "DELETE FROM tb_project WHERE id=$1", idToInt)
+
+	return c.Redirect(http.StatusMovedPermanently, "/Project")
+}
+
+// fungsi update/edit project
 func UpdateProject(c echo.Context) error {
 	session, _ := session.Get("session", c)
 
@@ -407,6 +417,7 @@ func UpdateProject(c echo.Context) error {
 
 }
 
+// fungsi perhitungan count duration
 func countDuration(d1 time.Time, d2 time.Time) string {
 
 	diff := d2.Sub(d1)
@@ -426,6 +437,7 @@ func countDuration(d1 time.Time, d2 time.Time) string {
 	return strconv.Itoa(days) + " hari"
 }
 
+// fungsi cek value true/false
 func checkValue(slice []string, object string) bool {
 	for _, data := range slice {
 		if data == object {
@@ -437,6 +449,7 @@ func checkValue(slice []string, object string) bool {
 
 // auth and session
 
+// menampilkan form login
 func FormLogin(c echo.Context) error {
 	var tmpl, err = template.ParseFiles("views/login.html")
 
@@ -462,6 +475,7 @@ func FormLogin(c echo.Context) error {
 	return tmpl.Execute(c.Response(), messageFlash)
 }
 
+// menampilkan form register
 func FormRegister(c echo.Context) error {
 	var tmpl, err = template.ParseFiles("views/register.html")
 
@@ -483,6 +497,7 @@ func FormRegister(c echo.Context) error {
 	return tmpl.Execute(c.Response(), messageFlash)
 }
 
+// fungsi register
 func registerUser(c echo.Context) error {
 	err := c.Request().ParseForm()
 	if err != nil {
@@ -503,6 +518,7 @@ func registerUser(c echo.Context) error {
 	return redirectMessage(c, "Registration Success", true, "/FormLogin")
 }
 
+// fungsi login
 func loginUser(c echo.Context) error {
 	err := c.Request().ParseForm()
 	if err != nil {
@@ -537,6 +553,7 @@ func loginUser(c echo.Context) error {
 	return redirectMessage(c, "Login Succes", true, "/Project")
 }
 
+// fungsi redirect message
 func redirectMessage(c echo.Context, message string, status bool, path string) error {
 	session, _ := session.Get("session", c)
 	session.Values["message"] = message
@@ -546,6 +563,7 @@ func redirectMessage(c echo.Context, message string, status bool, path string) e
 	return c.Redirect(http.StatusSeeOther, path)
 }
 
+// fungsi logout
 func logout(c echo.Context) error {
 	session, _ := session.Get("session", c)
 	session.Options.MaxAge = -1
