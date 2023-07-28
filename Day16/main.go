@@ -261,7 +261,7 @@ func ProjectDetail(c echo.Context) error {
 
 	ProjectDetail := Project{}
 
-	errQuery := connection.Conn.QueryRow(context.Background(), "SELECT tb_project.id, title, image, start_date, end_date, content, technologies, tb_user.name AS author, tb_user.id FROM tb_project LEFT JOIN tb_user ON tb_project.author = tb_user.id WHERE tb_user.id = $1;", idToInt).Scan(&ProjectDetail.Id, &ProjectDetail.Title, &ProjectDetail.Image, &ProjectDetail.StartDate, &ProjectDetail.EndDate, &ProjectDetail.Content, &ProjectDetail.Technologies, &ProjectDetail.Author)
+	errQuery := connection.Conn.QueryRow(context.Background(), "SELECT tb_project.id, title, image, start_date, end_date, content, technologies, tb_user.name AS author FROM tb_project LEFT JOIN tb_user ON tb_project.author = tb_user.id WHERE tb_project.id = $1;", idToInt).Scan(&ProjectDetail.Id, &ProjectDetail.Title, &ProjectDetail.Image, &ProjectDetail.StartDate, &ProjectDetail.EndDate, &ProjectDetail.Content, &ProjectDetail.Technologies, &ProjectDetail.Author)
 
 	if errQuery != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())

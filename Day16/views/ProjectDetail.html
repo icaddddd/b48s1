@@ -62,7 +62,7 @@
       <div class="myproject-detail1">   
           <h1>{{ .Project.Title }}</h1>
           <div class="new">
-              <img src="/assets/images/{{.Project.Image}}">
+              <img src="/uploads/{{.Project.Image}}">
               <div class="text">
                   <div class="text1">
                       <h2>Duration</h2>
@@ -110,6 +110,7 @@
                   </div>
           </div>
               </div>
+              <h4>Author: {{ .Project.Author }}</h4>
               <h5>{{ .Project.Content }}</h5>
       </div>
   </div>
