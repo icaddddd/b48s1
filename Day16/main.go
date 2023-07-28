@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"day10/connection"
+	"day10/middleware"
 	"html/template"
 	"log"
 	"net/http"
@@ -56,6 +57,7 @@ func main() {
 	e.Use(session.Middleware(sessions.NewCookieStore([]byte("session"))))
 
 	e.Static("/assets", "assets")
+	e.Static("/uploads", "uploads")
 
 	e.GET("/", home)
 	e.GET("/contact", contact)
@@ -69,9 +71,9 @@ func main() {
 	e.GET("/FormLogin", FormLogin)
 	e.GET("/logout", logout)
 
-	e.POST("/AddProject", AddProject)
+	e.POST("/AddProject", middleware.UploadFile(AddProject))
 	e.POST("/DeleteProject/:id", DeleteProject)
-	e.POST("/UpdateProject", UpdateProject)
+	e.POST("/UpdateProject", middleware.UploadFile(UpdateProject))
 
 	e.POST("/register", registerUser)
 	e.POST("/login", loginUser)
@@ -295,7 +297,7 @@ func AddProject(c echo.Context) error {
 	session, _ := session.Get("session", c)
 
 	title := c.FormValue("title")
-	image := c.FormValue("image")
+	image := c.Get("dataFile").(string)
 	startdate := c.FormValue("startdate")
 	enddate := c.FormValue("enddate")
 	content := c.FormValue("content")
@@ -383,7 +385,7 @@ func UpdateProject(c echo.Context) error {
 
 	id := c.FormValue("id")
 	title := c.FormValue("title")
-	image := c.FormValue("image")
+	image := c.Get("dataFile").(string)
 	startdate := c.FormValue("startdate")
 	enddate := c.FormValue("enddate")
 	content := c.FormValue("content")
