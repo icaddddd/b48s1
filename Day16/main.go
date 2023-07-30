@@ -508,6 +508,12 @@ func registerUser(c echo.Context) error {
 	email := c.FormValue("email")
 	password := c.FormValue("password")
 
+	user := User{}
+	err = connection.Conn.QueryRow(context.Background(), "SELECT * FROM tb_user WHERE email=$1", email).Scan(&user.Id, &user.Name, &user.Email, &user.HashedPassword)
+	if err == nil {
+		return redirectMessage(c, "Email sudah terpakai!", false, "/FormRegister")
+	}
+
 	passwordHash, _ := bcrypt.GenerateFromPassword([]byte(password), 10)
 
 	_, err = connection.Conn.Exec(context.Background(), "INSERT INTO tb_user (name, email, password) VALUES ($1, $2, $3)", name, email, passwordHash)
