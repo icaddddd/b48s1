@@ -451,11 +451,6 @@ func checkValue(slice []string, object string) bool {
 
 // menampilkan form login
 func FormLogin(c echo.Context) error {
-	var tmpl, err = template.ParseFiles("views/login.html")
-
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err.Error())
-	}
 
 	session, _ := session.Get("session", c)
 
@@ -464,6 +459,7 @@ func FormLogin(c echo.Context) error {
 	}
 
 	messageFlash := map[string]interface{}{
+		"dataSession":  userData,
 		"FlashStatus":  session.Values["status"],
 		"FlashMessage": session.Values["message"],
 	}
@@ -471,6 +467,12 @@ func FormLogin(c echo.Context) error {
 	delete(session.Values, "status")
 	delete(session.Values, "message")
 	session.Save(c.Request(), c.Response())
+
+	var tmpl, err = template.ParseFiles("views/login.html")
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
 
 	return tmpl.Execute(c.Response(), messageFlash)
 }
@@ -540,11 +542,11 @@ func loginUser(c echo.Context) error {
 	errPass := bcrypt.CompareHashAndPassword([]byte(user.HashedPassword), []byte(password))
 
 	if errEmail != nil {
-		return redirectMessage(c, "Email or Password wrong!", true, "/FormLogin")
+		return redirectMessage(c, "Email or Password wrong!", false, "/FormLogin")
 	}
 
 	if errPass != nil {
-		return redirectMessage(c, "Email or Password wrong!", true, "/FormLogin")
+		return redirectMessage(c, "Email or Password wrong!", false, "/FormLogin")
 	}
 
 	session, _ := session.Get("session", c)
