@@ -2,6 +2,24 @@ body {
     background-color: lightgrey;
 }
 
+*::selection{
+    color: white !important;
+    background-color: orangered !important;
+}
+
+html::-webkit-scrollbar{
+    width: 0.5rem;
+}
+
+html::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: orangered;
+    border-radius: 5rem;
+}
+
 .container-fluid img {
     width: 40px;
     height: 40px;
